@@ -4,14 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeadLit Studios</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="templatemo-amber-folio.css">
-    
     <style>
         /* DeadLit Studios Dark / Cold-Metallic Theme Overrides */
         :root {
@@ -19,27 +12,12 @@
             --deadlit-glow: rgba(134, 192, 216, 0.4);
             --deadlit-dark-bg: #0a0c10;
             --deadlit-card-bg: #12161f;
-            --deadlit-text-muted: #9ca3af;
         }
 
         body {
             background-color: var(--deadlit-dark-bg) !important;
             color: #d1d5db !important;
             font-family: 'Cinzel', 'Trajan Pro', sans-serif, system-ui;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* FORCE ALL REVEAL SECTIONS TO BE VISIBLE BY DEFAULT */
-        .reveal, 
-        .reveal-init,
-        .hero-content, 
-        .about-container, 
-        .services-grid, 
-        .contact-info {
-            opacity: 1 !important;
-            transform: none !important;
-            visibility: visible !important;
         }
 
         /* Accent & Highlights Override */
@@ -53,11 +31,70 @@
         }
 
         /* Force Loading Screen to Hide Smoothly */
-        .loading-screen, #loadingScreen {
-            display: none !important;
+        .loading-screen.hidden {
             opacity: 0 !important;
             pointer-events: none !important;
             visibility: hidden !important;
+            transition: opacity 0.5s ease;
+        }
+
+        /* 16:9 Widescreen Coverflow Overrides */
+        .coverflow-item {
+            width: 480px !important;
+            height: 270px !important;
+            max-height: 270px !important;
+            aspect-ratio: 16 / 9 !important;
+            border-radius: 8px !important;
+            overflow: hidden !important;
+            cursor: pointer !important;
+            border: 1px solid rgba(134, 192, 216, 0.2) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .coverflow-item:hover {
+            border-color: var(--deadlit-blue) !important;
+            box-shadow: 0 0 20px var(--deadlit-glow) !important;
+        }
+
+        .portfolio-image {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+
+        /* Fix Text Overflow & Cutoff */
+        .portfolio-overlay {
+            bottom: 0 !important;
+            padding: 15px !important;
+            background: linear-gradient(transparent, rgba(10, 12, 16, 0.95)) !important;
+        }
+
+        .portfolio-title {
+            font-size: 1.1rem !important;
+            margin-bottom: 2px !important;
+            color: #f3f4f6 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .portfolio-category {
+            color: var(--deadlit-blue) !important;
+            text-transform: uppercase;
+            font-size: 0.75rem !important;
+            letter-spacing: 1.5px;
+        }
+
+        .portfolio-description {
+            font-size: 0.85rem !important;
+            color: #9ca3af !important;
+            margin-bottom: 8px !important;
+        }
+
+        .play-btn-badge {
+            display: inline-block !important;
+            padding: 4px 12px !important;
+            font-size: 0.75rem !important;
+            border-radius: 4px !important;
         }
 
         /* Video Popup Modal Styles */
@@ -82,7 +119,7 @@
             background: #000;
             border-radius: 8px;
             border: 1px solid rgba(134, 192, 216, 0.3);
-            overflow: visible;
+            overflow: hidden;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(134, 192, 216, 0.2);
         }
 
@@ -95,7 +132,6 @@
             font-weight: bold;
             cursor: pointer;
             transition: color 0.2s;
-            line-height: 1;
         }
 
         .close-modal-btn:hover {
@@ -107,8 +143,6 @@
             width: 100%;
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
-            border-radius: 8px;
-            overflow: hidden;
         }
 
         .iframe-container iframe {
@@ -117,7 +151,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border: 0;
         }
 
         /* Custom Header & Nav Styling */
@@ -125,10 +158,6 @@
             background-color: rgba(10, 12, 16, 0.9) !important;
             border-bottom: 1px solid rgba(134, 192, 216, 0.15);
             backdrop-filter: blur(8px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
         }
 
         .logo {
@@ -146,114 +175,6 @@
         .nav-menu a:hover {
             color: var(--deadlit-blue) !important;
             text-shadow: 0 0 8px var(--deadlit-glow);
-        }
-
-        /* About Section Styles */
-        .about-section {
-            padding: 100px 20px;
-            background-color: var(--deadlit-dark-bg);
-            color: #ffffff;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
-
-        .about-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            max-width: 1100px;
-            margin: 0 auto;
-            gap: 50px;
-        }
-
-        .about-image {
-            flex: 1 1 380px;
-            max-width: 460px;
-            aspect-ratio: 4 / 5;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid rgba(134, 192, 216, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            background-color: var(--deadlit-card-bg);
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .about-content {
-            flex: 1 1 500px;
-            text-align: left;
-        }
-
-        .about-content h2 {
-            font-family: 'Cinzel', 'Trajan Pro', serif;
-            font-size: 2.2rem;
-            color: #ffffff;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .about-content p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--deadlit-text-muted);
-            margin-bottom: 16px;
-        }
-
-        .stats {
-            display: flex;
-            gap: 35px;
-            margin-top: 35px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(134, 192, 216, 0.15);
-        }
-
-        .stat-item {
-            text-align: left;
-        }
-
-        .stat-number {
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--deadlit-blue);
-            text-shadow: 0 0 10px var(--deadlit-glow);
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: #d1d5db;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 4px;
-        }
-
-        @media (max-width: 768px) {
-            .about-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .about-content {
-                text-align: center;
-            }
-
-            .stats {
-                justify-content: center;
-            }
-
-            .stat-item {
-                text-align: center;
-            }
         }
 
         /* Service Cards Styling */
@@ -279,77 +200,20 @@
             fill: var(--deadlit-blue) !important;
         }
 
-        /* Contact Styles */
-        #contact .contact-info {
-            display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important;
-            gap: 20px !important;
-            width: 100% !important;
-            max-width: 1000px !important;
-            margin: 0 auto !important;
-            justify-content: center !important;
-        }
-
-        #contact .contact-item {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            text-align: center !important;
-            width: 100% !important;
-            padding: 30px 15px !important;
-            box-sizing: border-box !important;
-            margin: 0 !important;
-            background: var(--deadlit-card-bg);
-            border-radius: 8px;
-            border: 1px solid rgba(134, 192, 216, 0.15);
-            text-decoration: none;
-            color: #d1d5db;
-        }
-
-        #contact .contact-icon {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            width: 50px !important;
-            height: 50px !important;
-            margin: 0 auto 12px auto !important;
-            border-radius: 50% !important;
-            background: rgba(134, 192, 216, 0.1);
-            flex-shrink: 0 !important;
-        }
-
-        #contact .contact-icon svg {
-            width: 24px !important;
-            height: 24px !important;
-            fill: var(--deadlit-blue);
-        }
-
-        #contact .contact-label,
-        #contact .contact-value {
-            display: block !important;
-            width: 100% !important;
-            text-align: center !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-        }
-
-        #contact .contact-value {
-            font-size: 0.82rem !important;
-            word-break: break-all !important;
-            color: #fff;
-        }
-
         @media (max-width: 768px) {
-            #contact .contact-info {
-                grid-template-columns: 1fr !important;
+            .coverflow-item {
+                width: 320px !important;
+                height: 180px !important;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+    </div>
+
     <!-- Header Navigation -->
     <header id="header">
         <nav>
@@ -372,14 +236,14 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section" id="home" style="padding-top: 120px;">
+    <section class="hero-section" id="home">
         <div class="hero-bg"></div>
         <div class="hero-shapes">
             <div class="floating-accent accent-1"></div>
             <div class="floating-accent accent-2"></div>
             <div class="floating-accent accent-3"></div>
         </div>
-        <div class="hero-content">
+        <div class="hero-content reveal">
             <h1 class="hero-title" style="letter-spacing: 3px; text-transform: uppercase;">DeadLit Studios</h1>
             <p class="hero-subtitle">Cinematic Videography & Visual Production</p>
             <a href="#portfolio" class="cta-button">View Selected Works</a>
