@@ -250,239 +250,169 @@
         </div>
     </section>
 
-    <!-- Featured Work: Categorized Reels -->
-<section class="reels-section" id="featured-reels">
+  <!-- Featured Work: Interactive Editorial List -->
+<section class="editorial-section" id="featured-editorial">
     <style>
-        #featured-reels {
-            padding: 60px 20px;
-            max-width: 1300px;
+        #featured-editorial {
+            padding: 80px 20px;
+            max-width: 1200px;
             margin: 0 auto;
             color: #fff;
         }
 
-        .genre-block {
-            margin-bottom: 50px;
+        .editorial-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
         }
 
-        .genre-header {
+        /* Project List Stack */
+        .project-list {
             display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 12px;
-            margin-bottom: 20px;
+            flex-direction: column;
         }
 
-        .genre-title {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .project-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: opacity 0.3s ease, padding 0.3s ease;
+        }
+
+        .project-item:hover,
+        .project-item.active {
+            padding-left: 10px;
+            border-bottom-color: #fff;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+        }
+
+        .project-artist {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .project-genre {
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin: 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+            color: #ccc;
         }
 
-        .genre-subtitle {
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        /* Horizontal Scrolling Container */
-        .reel-row {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding-bottom: 15px;
-            scrollbar-width: thin;
-            scrollbar-color: #444 #111;
-        }
-
-        .reel-row::-webkit-scrollbar {
-            height: 6px;
-        }
-        .reel-row::-webkit-scrollbar-thumb {
-            background: #444;
-            border-radius: 4px;
-        }
-
-        .reel-card {
-            flex: 0 0 320px;
-            background: #111;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            cursor: pointer;
-        }
-
-        .reel-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .reel-thumb {
-            position: relative;
+        /* Dynamic Preview Window */
+        .preview-window {
+            position: sticky;
+            top: 100px;
             width: 100%;
             aspect-ratio: 16 / 9;
-            background: #222;
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
         }
 
-        .reel-thumb img {
+        .preview-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
-        .play-btn-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .reel-card:hover .play-btn-overlay {
-            opacity: 1;
-        }
-
-        .play-icon {
-            width: 48px;
-            height: 48px;
-            background: #fff;
-            color: #000;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            padding-left: 3px;
-        }
-
-        .reel-meta {
-            padding: 14px;
-        }
-
-        .reel-project-title {
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 0 0 4px 0;
-            color: #fff;
-        }
-
-        .reel-artist {
-            font-size: 0.85rem;
-            color: #aaa;
-            margin: 0;
+        @media (max-width: 900px) {
+            .editorial-container {
+                grid-template-columns: 1fr;
+            }
+            .preview-window {
+                position: relative;
+                top: 0;
+                order: -1; /* Display preview above list on mobile */
+            }
         }
     </style>
 
     <div class="section-header" style="text-align: center; margin-bottom: 50px;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 8px;">Featured Work</h2>
-        <p style="color: #888;">Explore projects categorized by style and production type</p>
+        <h2 style="font-size: 2.5rem; margin-bottom: 8px;">Featured Works</h2>
+        <p style="color: #888;">Hover over a project to preview</p>
     </div>
 
-    <!-- Category 1: Heavy & Rock -->
-    <div class="genre-block">
-        <div class="genre-header">
-            <h3 class="genre-title">Heavy / Rock / Metal</h3>
-            <span class="genre-subtitle">Music Videos & Visualizers</span>
-        </div>
-        <div class="reel-row">
-            <div class="reel-card">
-                <div class="reel-thumb">
-                    <img src="heavy-thumb-1.jpg" alt="Heavy Video">
-                    <div class="play-btn-overlay"><div class="play-icon">▶</div></div>
+    <div class="editorial-container">
+        <!-- Left: Project Titles -->
+        <div class="project-list">
+            <div class="project-item active" onmouseenter="updatePreview('heavy-1.jpg')" onclick="openVideo('heavy-1-link')">
+                <div class="project-info">
+                    <span class="project-name">Song Name Title</span>
+                    <span class="project-artist">Band Name</span>
                 </div>
-                <div class="reel-meta">
-                    <h4 class="reel-project-title">Project Title</h4>
-                    <p class="reel-artist">Band Name</p>
-                </div>
+                <span class="project-genre">Heavy / Metal</span>
             </div>
-            <div class="reel-card">
-                <div class="reel-thumb">
-                    <img src="heavy-thumb-2.jpg" alt="Heavy Video">
-                    <div class="play-btn-overlay"><div class="play-icon">▶</div></div>
-                </div>
-                <div class="reel-meta">
-                    <h4 class="reel-project-title">Project Title</h4>
-                    <p class="reel-artist">Band Name</p>
-                </div>
-            </div>
-            <div class="reel-card">
-                <div class="reel-thumb">
-                    <img src="heavy-thumb-3.jpg" alt="Heavy Video">
-                    <div class="play-btn-overlay"><div class="play-icon">▶</div></div>
-                </div>
-                <div class="reel-meta">
-                    <h4 class="reel-project-title">Project Title</h4>
-                    <p class="reel-artist">Band Name</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Category 2: Hip-Hop & Urban -->
-    <div class="genre-block">
-        <div class="genre-header">
-            <h3 class="genre-title">Hip-Hop & Rap</h3>
-            <span class="genre-subtitle">Music Videos & Performance Visuals</span>
+            <div class="project-item" onmouseenter="updatePreview('hiphop-1.jpg')" onclick="openVideo('hiphop-1-link')">
+                <div class="project-info">
+                    <span class="project-name">Track Title</span>
+                    <span class="project-artist">Artist Name</span>
+                </div>
+                <span class="project-genre">Hip-Hop</span>
+            </div>
+
+            <div class="project-item" onmouseenter="updatePreview('commercial-1.jpg')" onclick="openVideo('commercial-1-link')">
+                <div class="project-info">
+                    <span class="project-name">Brand Commercial</span>
+                    <span class="project-artist">Company Name</span>
+                </div>
+                <span class="project-genre">Commercial</span>
+            </div>
+
+            <div class="project-item" onmouseenter="updatePreview('visualizer-1.jpg')" onclick="openVideo('visualizer-1-link')">
+                <div class="project-info">
+                    <span class="project-name">Kinetic Lyric Video</span>
+                    <span class="project-artist">Artist Name</span>
+                </div>
+                <span class="project-genre">Visualizer</span>
+            </div>
         </div>
-        <div class="reel-row">
-            <div class="reel-card">
-                <div class="reel-thumb">
-                    <img src="hiphop-thumb-1.jpg" alt="Hip Hop Video">
-                    <div class="play-btn-overlay"><div class="play-icon">▶</div></div>
-                </div>
-                <div class="reel-meta">
-                    <h4 class="reel-project-title">Track Name</h4>
-                    <p class="reel-artist">Artist Name</p>
-                </div>
-            </div>
-            <div class="reel-card">
-                <div class="reel-thumb">
-                    <img src="hiphop-thumb-2.jpg" alt="Hip Hop Video">
-                    <div class="play-btn-overlay"><div class="play-icon">▶</div></div>
-                </div>
-                <div class="reel-meta">
-                    <h4 class="reel-project-title">Track Name</h4>
-                    <p class="reel-artist">Artist Name</p>
-                </div>
-            </div>
+
+        <!-- Right: Dynamic Preview Image/Video -->
+        <div class="preview-window">
+            <img id="active-preview" class="preview-img" src="heavy-1.jpg" alt="Video Preview">
         </div>
     </div>
 
-    <!-- Category 3: Commercial & Corporate -->
-    <div class="genre-block">
-        <div class="genre-header">
-            <h3 class="genre-title">Commercial & Promo</h3>
-            <span class="genre-subtitle">Brand Spotlights & Product Ads</span>
-        </div>
-        <div class="reel-row">
-            <div class="reel-card">
-                <div class="reel-thumb">
-                    <img src="commercial-thumb-1.jpg" alt="Commercial">
-                    <div class="play-btn-overlay"><div class="play-icon">▶</div></div>
-                </div>
-                <div class="reel-meta">
-                    <h4 class="reel-project-title">Brand Campaign</h4>
-                    <p class="reel-artist">Client Name</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <script>
+        function updatePreview(imageSrc) {
+            const previewImg = document.getElementById('active-preview');
+            previewImg.style.opacity = '0.3';
+            setTimeout(() => {
+                previewImg.src = imageSrc;
+                previewImg.style.opacity = '1';
+            }, 150);
+        }
+
+        // Highlight active item on hover
+        document.querySelectorAll('.project-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                document.querySelectorAll('.project-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
 </section>
-
-    <!-- Video Lightbox Modal -->
-    <div id="videoModal" class="video-modal" onclick="closeVideoModal()">
-        <div class="video-modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal-btn" onclick="closeVideoModal()">&times;</span>
-            <div class="iframe-container">
-                <iframe id="videoIframe" src="" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
 
     <!-- About Section -->
     <section class="about-section" id="about">
