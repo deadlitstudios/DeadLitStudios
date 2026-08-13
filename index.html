@@ -250,179 +250,261 @@
         </div>
     </section>
 
-  <!-- Full-Width Split Cinematic Showcase -->
-<section class="cinema-section" id="cinema-work">
+  <!-- Modern Interactive Hover Grid -->
+<section class="sleek-portfolio" id="portfolio">
     <style>
-        #cinema-work {
-            padding: 80px 0;
-            background: #000;
+        #portfolio {
+            padding: 100px 20px;
+            max-width: 1300px;
+            margin: 0 auto;
+            color: #fff;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .sleek-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .sleek-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(180deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0 0 10px 0;
+        }
+
+        .sleek-subtitle {
+            color: #666;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Modern Filter Pills */
+        .sleek-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .sleek-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #888;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sleek-pill:hover,
+        .sleek-pill.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+        }
+
+        /* Portfolio Grid */
+        .sleek-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 30px;
+        }
+
+        .sleek-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            aspect-ratio: 16 / 9;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .sleek-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+
+        .sleek-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .sleek-card:hover img {
+            transform: scale(1.08);
+            opacity: 0.4;
+        }
+
+        /* Floating Info Overlay */
+        .sleek-overlay {
+            position: absolute;
+            inset: 0;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
+            z-index: 2;
+        }
+
+        .sleek-tag {
+            align-self: flex-start;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .sleek-details {
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+
+        .sleek-card:hover .sleek-details {
+            transform: translateY(0);
+        }
+
+        .sleek-project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0 0 6px 0;
             color: #fff;
         }
 
-        .cinema-header {
-            max-width: 1200px;
-            margin: 0 auto 40px auto;
-            padding: 0 20px;
-        }
-
-        .cinema-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin: 0;
-        }
-
-        .cinema-list {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .cinema-item {
-            position: relative;
-            width: 100%;
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5%;
-            box-sizing: border-box;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-            overflow: hidden;
-            transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .cinema-item:last-child {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Hover expansion */
-        .cinema-item:hover {
-            height: 220px;
-        }
-
-        /* Background image container inside row */
-        .cinema-bg {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            filter: grayscale(80%);
-            transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s ease;
-            z-index: 1;
-        }
-
-        .cinema-item:hover .cinema-bg {
-            opacity: 0.45;
-            filter: grayscale(0%);
-            transform: scale(1.03);
-        }
-
-        .cinema-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .cinema-number {
-            font-size: 0.9rem;
-            color: #555;
-            font-family: monospace;
-        }
-
-        .cinema-title-group h3 {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 700;
-            margin: 0;
-            transition: transform 0.3s ease;
-        }
-
-        .cinema-item:hover .cinema-title-group h3 {
-            transform: translateX(10px);
-        }
-
-        .cinema-artist {
+        .sleek-artist {
             font-size: 0.9rem;
             color: #aaa;
-            margin-top: 4px;
+            margin: 0;
         }
 
-        .cinema-meta {
-            position: relative;
-            z-index: 2;
+        /* Play Button Icon on Hover */
+        .sleek-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.6);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 15px;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 3;
         }
 
-        .cinema-genre-badge {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 6px 14px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
+        .sleek-card:hover .sleek-play {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .sleek-play svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+            margin-left: 3px;
         }
     </style>
 
-    <div class="cinema-header">
-        <h2>SELECTED DIRECTED WORKS</h2>
+    <div class="sleek-header">
+        <h2 class="sleek-title">FEATURED WORK</h2>
+        <p class="sleek-subtitle">Selected Visual Productions</p>
     </div>
 
-    <div class="cinema-list">
-        <!-- Project 1 -->
-        <div class="cinema-item">
-            <div class="cinema-bg" style="background-image: url('heavy-bg.jpg');"></div>
-            <div class="cinema-content">
-                <span class="cinema-number">/ 01</span>
-                <div class="cinema-title-group">
-                    <h3>TRACK TITLE</h3>
-                    <div class="cinema-artist">Band Name • Heavy / Metalcore</div>
-                </div>
+    <!-- Category Filters -->
+    <div class="sleek-filters">
+        <button class="sleek-pill active" onclick="filterSleek('all')">All</button>
+        <button class="sleek-pill" onclick="filterSleek('heavy')">Heavy / Metal</button>
+        <button class="sleek-pill" onclick="filterSleek('hiphop')">Hip-Hop</button>
+        <button class="sleek-pill" onclick="filterSleek('visualizer')">Visualizers</button>
+        <button class="sleek-pill" onclick="filterSleek('commercial')">Commercial</button>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="sleek-grid">
+        <div class="sleek-card" data-cat="heavy">
+            <img src="thumb1.jpg" alt="Project">
+            <div class="sleek-play">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </div>
-            <div class="cinema-meta">
-                <span class="cinema-genre-badge">Music Video</span>
+            <div class="sleek-overlay">
+                <span class="sleek-tag">Heavy / Metal</span>
+                <div class="sleek-details">
+                    <h3 class="sleek-project-title">Track Title</h3>
+                    <p class="sleek-artist">Band Name</p>
+                </div>
             </div>
         </div>
 
-        <!-- Project 2 -->
-        <div class="cinema-item">
-            <div class="cinema-bg" style="background-image: url('hiphop-bg.jpg');"></div>
-            <div class="cinema-content">
-                <span class="cinema-number">/ 02</span>
-                <div class="cinema-title-group">
-                    <h3>TRACK TITLE</h3>
-                    <div class="cinema-artist">Artist Name • Hip-Hop / Rap</div>
-                </div>
+        <div class="sleek-card" data-cat="hiphop">
+            <img src="thumb2.jpg" alt="Project">
+            <div class="sleek-play">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </div>
-            <div class="cinema-meta">
-                <span class="cinema-genre-badge">Performance</span>
+            <div class="sleek-overlay">
+                <span class="sleek-tag">Hip-Hop</span>
+                <div class="sleek-details">
+                    <h3 class="sleek-project-title">Single Release</h3>
+                    <p class="sleek-artist">Artist Name</p>
+                </div>
             </div>
         </div>
 
-        <!-- Project 3 -->
-        <div class="cinema-item">
-            <div class="cinema-bg" style="background-image: url('commercial-bg.jpg');"></div>
-            <div class="cinema-content">
-                <span class="cinema-number">/ 03</span>
-                <div class="cinema-title-group">
-                    <h3>BRAND CAMPAIGN</h3>
-                    <div class="cinema-artist">Company Name • Commercial</div>
-                </div>
+        <div class="sleek-card" data-cat="commercial">
+            <img src="thumb3.jpg" alt="Project">
+            <div class="sleek-play">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </div>
-            <div class="cinema-meta">
-                <span class="cinema-genre-badge">Spotlight</span>
+            <div class="sleek-overlay">
+                <span class="sleek-tag">Commercial</span>
+                <div class="sleek-details">
+                    <h3 class="sleek-project-title">Brand Campaign</h3>
+                    <p class="sleek-artist">Client Spotlight</p>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function filterSleek(cat) {
+            document.querySelectorAll('.sleek-pill').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.sleek-card').forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </section>
-
     <!-- About Section -->
     <section class="about-section" id="about">
         <div class="about-container reveal">
