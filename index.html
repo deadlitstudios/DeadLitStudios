@@ -22,6 +22,14 @@
             padding: 0;
         }
 
+        /* 1. Hide residual template background shapes/decorations */
+        .hero-section::after,
+        body::before,
+        body::after {
+            display: none !important;
+            background: none !important;
+        }
+
         /* Force reveal elements to show even if scroll script fails */
         .reveal {
             opacity: 1 !important;
@@ -48,14 +56,16 @@
             transition: opacity 0.5s ease;
         }
 
-        /* Custom Header & Nav Styling */
+        /* 2. Header & Nav Styling Fix */
         header {
-            background-color: rgba(10, 12, 16, 0.9) !important;
-            border-bottom: 1px solid rgba(134, 192, 216, 0.15);
-            backdrop-filter: blur(8px);
-            position: sticky;
+            position: fixed !important;
             top: 0;
-            z-index: 1000;
+            left: 0;
+            width: 100%;
+            background-color: rgba(10, 12, 16, 0.95) !important;
+            border-bottom: 1px solid rgba(134, 192, 216, 0.2);
+            backdrop-filter: blur(12px);
+            z-index: 9999 !important;
         }
 
         nav {
@@ -95,10 +105,11 @@
             text-shadow: 0 0 8px var(--deadlit-glow);
         }
 
-        /* Hero Container Styles */
+        /* 3. Hero Container Styles & Clean Layout */
         .hero-section {
             position: relative;
-            min-height: 85vh;
+            min-height: 90vh;
+            margin-top: 70px; /* Offset for fixed header */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -107,13 +118,13 @@
             border-bottom: 1px solid rgba(134, 192, 216, 0.2);
         }
 
-        /* Background Scanlines Grid Overlay */
+        /* Clean Background Grid Overlay (No template artifacts) */
         .hero-section::before {
             content: '';
             position: absolute;
             inset: 0;
             background: 
-                linear-gradient(rgba(10, 12, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%),
+                linear-gradient(rgba(10, 12, 16, 0.2) 50%, rgba(0, 0, 0, 0.6) 50%),
                 linear-gradient(90deg, rgba(134, 192, 216, 0.03) 1px, transparent 1px);
             background-size: 100% 4px, 40px 100%;
             pointer-events: none;
@@ -141,16 +152,16 @@
             100% { transform: scale(0.95); opacity: 0.3; }
         }
 
-        /* EKG Line Container */
+        /* EKG Line - Constrained so spikes stay clean */
         .ekg-container {
             position: absolute;
             width: 100%;
-            height: 180px;
-            top: 50%;
+            height: 120px;
+            top: 48%;
             transform: translateY(-50%);
             pointer-events: none;
             z-index: 2;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
         .ekg-svg {
@@ -173,7 +184,18 @@
             100% { stroke-dashoffset: 0; }
         }
 
-        /* Status Badge above Title */
+        /* Hero Content Stacking & Clean Spacing */
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            padding: 0 20px;
+        }
+
         .status-badge {
             display: inline-flex;
             align-items: center;
@@ -186,8 +208,8 @@
             letter-spacing: 2px;
             color: var(--deadlit-blue);
             text-transform: uppercase;
-            margin-bottom: 20px;
             box-shadow: 0 0 10px rgba(134, 192, 216, 0.1);
+            margin-bottom: 5px;
         }
 
         .status-dot {
@@ -204,28 +226,25 @@
             100% { opacity: 1; }
         }
 
-        /* Hero Typography Refinements */
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-        }
-
         .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.8rem) !important;
+            font-size: clamp(2.2rem, 5.5vw, 4.5rem) !important;
             font-weight: 900 !important;
-            letter-spacing: 5px !important;
+            letter-spacing: 6px !important;
             color: #ffffff !important;
-            text-shadow: 0 0 20px rgba(134, 192, 216, 0.5), 0 0 40px rgba(134, 192, 216, 0.2);
-            margin: 0 0 10px 0 !important;
+            text-shadow: 0 0 25px rgba(134, 192, 216, 0.6), 0 0 50px rgba(10, 12, 16, 0.9);
+            margin: 0 !important;
+            line-height: 1.1;
         }
 
         .hero-subtitle {
             color: #94a3b8 !important;
-            font-size: 1.1rem !important;
-            letter-spacing: 3px !important;
+            font-size: clamp(0.85rem, 1.8vw, 1.1rem) !important;
+            letter-spacing: 4px !important;
             text-transform: uppercase;
-            margin-bottom: 35px !important;
+            margin: 10px 0 0 0 !important;
+            background: rgba(10, 12, 16, 0.75);
+            padding: 4px 14px;
+            border-radius: 4px;
         }
 
         /* Featured Work / Sleek Portfolio Section Styles */
@@ -651,7 +670,7 @@
         <div class="heartbeat-glow"></div>
         <div class="ekg-container">
             <svg class="ekg-svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
-                <path class="ekg-path" d="M0,50 L300,50 L310,20 L320,80 L330,10 L340,90 L350,50 L1000,50" />
+                <path class="ekg-path" d="M0,50 L380,50 L390,25 L400,75 L405,15 L415,85 L425,50 L1000,50" />
             </svg>
         </div>
         <div class="hero-content">
