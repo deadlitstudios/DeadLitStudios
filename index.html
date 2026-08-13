@@ -18,6 +18,8 @@
             background-color: var(--deadlit-dark-bg) !important;
             color: #d1d5db !important;
             font-family: 'Cinzel', 'Trajan Pro', sans-serif, system-ui;
+            margin: 0;
+            padding: 0;
         }
 
         /* Accent & Highlights Override */
@@ -36,65 +38,6 @@
             pointer-events: none !important;
             visibility: hidden !important;
             transition: opacity 0.5s ease;
-        }
-
-        /* 16:9 Widescreen Coverflow Overrides */
-        .coverflow-item {
-            width: 480px !important;
-            height: 270px !important;
-            max-height: 270px !important;
-            aspect-ratio: 16 / 9 !important;
-            border-radius: 8px !important;
-            overflow: hidden !important;
-            cursor: pointer !important;
-            border: 1px solid rgba(134, 192, 216, 0.2) !important;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8) !important;
-        }
-
-        .coverflow-item:hover {
-            border-color: var(--deadlit-blue) !important;
-            box-shadow: 0 0 20px var(--deadlit-glow) !important;
-        }
-
-        .portfolio-image {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-        }
-
-        /* Fix Text Overflow & Cutoff */
-        .portfolio-overlay {
-            bottom: 0 !important;
-            padding: 15px !important;
-            background: linear-gradient(transparent, rgba(10, 12, 16, 0.95)) !important;
-        }
-
-        .portfolio-title {
-            font-size: 1.1rem !important;
-            margin-bottom: 2px !important;
-            color: #f3f4f6 !important;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .portfolio-category {
-            color: var(--deadlit-blue) !important;
-            text-transform: uppercase;
-            font-size: 0.75rem !important;
-            letter-spacing: 1.5px;
-        }
-
-        .portfolio-description {
-            font-size: 0.85rem !important;
-            color: #9ca3af !important;
-            margin-bottom: 8px !important;
-        }
-
-        .play-btn-badge {
-            display: inline-block !important;
-            padding: 4px 12px !important;
-            font-size: 0.75rem !important;
-            border-radius: 4px !important;
         }
 
         /* Video Popup Modal Styles */
@@ -119,7 +62,7 @@
             background: #000;
             border-radius: 8px;
             border: 1px solid rgba(134, 192, 216, 0.3);
-            overflow: hidden;
+            overflow: visible;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(134, 192, 216, 0.2);
         }
 
@@ -132,6 +75,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: color 0.2s;
+            line-height: 1;
         }
 
         .close-modal-btn:hover {
@@ -143,6 +87,8 @@
             width: 100%;
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         .iframe-container iframe {
@@ -151,6 +97,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            border: 0;
         }
 
         /* Custom Header & Nav Styling */
@@ -200,10 +147,64 @@
             fill: var(--deadlit-blue) !important;
         }
 
+        /* Contact Styles */
+        #contact .contact-info {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 20px !important;
+            width: 100% !important;
+            max-width: 1000px !important;
+            margin: 0 auto !important;
+            justify-content: center !important;
+        }
+
+        #contact .contact-item {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            width: 100% !important;
+            padding: 30px 15px !important;
+            box-sizing: border-box !important;
+            margin: 0 !important;
+        }
+
+        #contact .contact-icon {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 50px !important;
+            height: 50px !important;
+            margin: 0 auto 12px auto !important;
+            border-radius: 50% !important;
+            flex-shrink: 0 !important;
+        }
+
+        #contact .contact-icon svg {
+            width: 24px !important;
+            height: 24px !important;
+        }
+
+        #contact .contact-label,
+        #contact .contact-value {
+            display: block !important;
+            width: 100% !important;
+            text-align: center !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        #contact .contact-value {
+            font-size: 0.82rem !important;
+            word-break: break-all !important;
+        }
+
         @media (max-width: 768px) {
-            .coverflow-item {
-                width: 320px !important;
-                height: 180px !important;
+            #contact .contact-info {
+                grid-template-columns: 1fr !important;
             }
         }
     </style>
@@ -250,261 +251,243 @@
         </div>
     </section>
 
-  <!-- Modern Interactive Hover Grid -->
-<section class="sleek-portfolio" id="portfolio">
-    <style>
-        #portfolio {
-            padding: 100px 20px;
-            max-width: 1300px;
-            margin: 0 auto;
-            color: #fff;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
+    <!-- Modern Interactive Hover Grid -->
+    <section class="sleek-portfolio" id="portfolio">
+        <style>
+            #portfolio {
+                padding: 100px 20px;
+                max-width: 1300px;
+                margin: 0 auto;
+                color: #fff;
+                font-family: system-ui, -apple-system, sans-serif;
+            }
 
-        .sleek-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+            .sleek-header {
+                text-align: center;
+                margin-bottom: 60px;
+            }
 
-        .sleek-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            letter-spacing: -1px;
-            background: linear-gradient(180deg, #fff 0%, #888 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 0 0 10px 0;
-        }
+            .sleek-title {
+                font-size: clamp(2rem, 5vw, 3.5rem);
+                font-weight: 800;
+                letter-spacing: -1px;
+                background: linear-gradient(180deg, #fff 0%, #888 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin: 0 0 10px 0;
+            }
 
-        .sleek-subtitle {
-            color: #666;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+            .sleek-subtitle {
+                color: #666;
+                font-size: 1rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+            }
 
-        /* Modern Filter Pills */
-        .sleek-filters {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
-        }
+            .sleek-filters {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                flex-wrap: wrap;
+                margin-bottom: 50px;
+            }
 
-        .sleek-pill {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #888;
-            padding: 8px 20px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+            .sleek-pill {
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                color: #888;
+                padding: 8px 20px;
+                border-radius: 100px;
+                font-size: 0.85rem;
+                cursor: pointer;
+                backdrop-filter: blur(10px);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
 
-        .sleek-pill:hover,
-        .sleek-pill.active {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
-            font-weight: 600;
-        }
+            .sleek-pill:hover,
+            .sleek-pill.active {
+                background: #fff;
+                color: #000;
+                border-color: #fff;
+                box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+                font-weight: 600;
+            }
 
-        /* Portfolio Grid */
-        .sleek-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 30px;
-        }
+            .sleek-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+                gap: 30px;
+            }
 
-        .sleek-card {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            background: #0a0a0a;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            aspect-ratio: 16 / 9;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+            .sleek-card {
+                position: relative;
+                border-radius: 16px;
+                overflow: hidden;
+                background: #0a0a0a;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                aspect-ratio: 16 / 9;
+                cursor: pointer;
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
 
-        .sleek-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-        }
+            .sleek-card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0.8;
+                transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            }
 
-        .sleek-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-        }
+            .sleek-card:hover {
+                transform: translateY(-8px);
+                border-color: rgba(255, 255, 255, 0.3);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            }
 
-        .sleek-card:hover img {
-            transform: scale(1.08);
-            opacity: 0.4;
-        }
+            .sleek-card:hover img {
+                transform: scale(1.08);
+                opacity: 0.4;
+            }
 
-        /* Floating Info Overlay */
-        .sleek-overlay {
-            position: absolute;
-            inset: 0;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
-            z-index: 2;
-        }
+            .sleek-overlay {
+                position: absolute;
+                inset: 0;
+                padding: 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
+                z-index: 2;
+            }
 
-        .sleek-tag {
-            align-self: flex-start;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 6px 12px;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
+            .sleek-tag {
+                align-self: flex-start;
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                padding: 6px 12px;
+                border-radius: 6px;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(8px);
+                color: #fff;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+            }
 
-        .sleek-details {
-            transform: translateY(10px);
-            transition: transform 0.4s ease;
-        }
+            .sleek-details {
+                transform: translateY(10px);
+                transition: transform 0.4s ease;
+            }
 
-        .sleek-card:hover .sleek-details {
-            transform: translateY(0);
-        }
+            .sleek-card:hover .sleek-details {
+                transform: translateY(0);
+            }
 
-        .sleek-project-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin: 0 0 6px 0;
-            color: #fff;
-        }
+            .sleek-project-title {
+                font-size: 1.4rem;
+                font-weight: 700;
+                margin: 0 0 6px 0;
+                color: #fff;
+            }
 
-        .sleek-artist {
-            font-size: 0.9rem;
-            color: #aaa;
-            margin: 0;
-        }
+            .sleek-artist {
+                font-size: 0.9rem;
+                color: #aaa;
+                margin: 0;
+            }
 
-        /* Play Button Icon on Hover */
-        .sleek-play {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.6);
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 3;
-        }
+            .sleek-play {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0.6);
+                width: 60px;
+                height: 60px;
+                background: rgba(255, 255, 255, 0.15);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                z-index: 3;
+            }
 
-        .sleek-card:hover .sleek-play {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-        }
+            .sleek-card:hover .sleek-play {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
 
-        .sleek-play svg {
-            width: 20px;
-            height: 20px;
-            fill: #fff;
-            margin-left: 3px;
-        }
-    </style>
+            .sleek-play svg {
+                width: 20px;
+                height: 20px;
+                fill: #fff;
+                margin-left: 3px;
+            }
+        </style>
 
-    <div class="sleek-header">
-        <h2 class="sleek-title">FEATURED WORK</h2>
-        <p class="sleek-subtitle">Selected Visual Productions</p>
-    </div>
+        <div class="sleek-header">
+            <h2 class="sleek-title">FEATURED WORK</h2>
+            <p class="sleek-subtitle">Selected Visual Productions</p>
+        </div>
 
-    <!-- Category Filters -->
-    <div class="sleek-filters">
-        <button class="sleek-pill active" onclick="filterSleek('all')">All</button>
-        <button class="sleek-pill" onclick="filterSleek('heavy')">Heavy / Metal</button>
-        <button class="sleek-pill" onclick="filterSleek('hiphop')">Hip-Hop</button>
-        <button class="sleek-pill" onclick="filterSleek('visualizer')">Visualizers</button>
-        <button class="sleek-pill" onclick="filterSleek('commercial')">Commercial</button>
-    </div>
+        <!-- Category Filters -->
+        <div class="sleek-filters">
+            <button class="sleek-pill active" onclick="filterSleek('all', event)">All</button>
+            <button class="sleek-pill" onclick="filterSleek('heavy', event)">Heavy / Metal</button>
+            <button class="sleek-pill" onclick="filterSleek('hiphop', event)">Hip-Hop</button>
+            <button class="sleek-pill" onclick="filterSleek('visualizer', event)">Visualizers</button>
+            <button class="sleek-pill" onclick="filterSleek('commercial', event)">Commercial</button>
+        </div>
 
-    <!-- Cards Grid -->
-    <div class="sleek-grid">
-        <div class="sleek-card" data-cat="heavy">
-            <img src="thumb1.jpg" alt="Project">
-            <div class="sleek-play">
-                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <!-- Cards Grid -->
+        <div class="sleek-grid">
+            <div class="sleek-card" data-cat="heavy" onclick="handleCardClick(this, 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
+                <img src="thumb1.jpg" alt="Project">
+                <div class="sleek-play">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="sleek-overlay">
+                    <span class="sleek-tag">Heavy / Metal</span>
+                    <div class="sleek-details">
+                        <h3 class="sleek-project-title">Track Title</h3>
+                        <p class="sleek-artist">Band Name</p>
+                    </div>
+                </div>
             </div>
-            <div class="sleek-overlay">
-                <span class="sleek-tag">Heavy / Metal</span>
-                <div class="sleek-details">
-                    <h3 class="sleek-project-title">Track Title</h3>
-                    <p class="sleek-artist">Band Name</p>
+
+            <div class="sleek-card" data-cat="hiphop" onclick="handleCardClick(this, 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
+                <img src="thumb2.jpg" alt="Project">
+                <div class="sleek-play">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="sleek-overlay">
+                    <span class="sleek-tag">Hip-Hop</span>
+                    <div class="sleek-details">
+                        <h3 class="sleek-project-title">Single Release</h3>
+                        <p class="sleek-artist">Artist Name</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sleek-card" data-cat="commercial" onclick="handleCardClick(this, 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
+                <img src="thumb3.jpg" alt="Project">
+                <div class="sleek-play">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="sleek-overlay">
+                    <span class="sleek-tag">Commercial</span>
+                    <div class="sleek-details">
+                        <h3 class="sleek-project-title">Brand Campaign</h3>
+                        <p class="sleek-artist">Client Spotlight</p>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="sleek-card" data-cat="hiphop">
-            <img src="thumb2.jpg" alt="Project">
-            <div class="sleek-play">
-                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <div class="sleek-overlay">
-                <span class="sleek-tag">Hip-Hop</span>
-                <div class="sleek-details">
-                    <h3 class="sleek-project-title">Single Release</h3>
-                    <p class="sleek-artist">Artist Name</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="sleek-card" data-cat="commercial">
-            <img src="thumb3.jpg" alt="Project">
-            <div class="sleek-play">
-                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <div class="sleek-overlay">
-                <span class="sleek-tag">Commercial</span>
-                <div class="sleek-details">
-                    <h3 class="sleek-project-title">Brand Campaign</h3>
-                    <p class="sleek-artist">Client Spotlight</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function filterSleek(cat) {
-            document.querySelectorAll('.sleek-pill').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            document.querySelectorAll('.sleek-card').forEach(card => {
-                if (cat === 'all' || card.getAttribute('data-cat') === cat) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-    </script>
-</section>
     <!-- About Section -->
     <section class="about-section" id="about">
         <div class="about-container reveal">
@@ -534,211 +517,138 @@
         </div>
     </section>
 
-   <!-- Services Section -->
-<section class="services-section" id="services">
-    <div class="services-container">
-        <div class="section-header reveal">
-            <h2 class="section-title">Services Offered</h2>
-            <p class="section-subtitle">Professional media production tailored to your vision</p>
-        </div>
-
-        <div class="services-grid reveal">
-            <!-- Music Video Production (Video Camera / Clapperboard) -->
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                        <path d="m16 13 5.223-3.482a.5.5 0 0 1 .777.416v8.132a.5.5 0 0 1-.777.416L16 15" />
-                        <rect width="14" height="12" x="2" y="6" rx="2" />
-                    </svg>
-                </div>
-                <h3 class="service-title">Music Video Production</h3>
-                <p class="service-description">Story-driven, performance-focused, and live music videos tailored to your track's identity. Full production from concept development to high-end color grading.</p>
-                <div class="service-price">Starting at $750</div>
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="services-container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Services Offered</h2>
+                <p class="section-subtitle">Professional media production tailored to your vision</p>
             </div>
 
-            <!-- Visualizers & Lyric Videos (Audio Waveform / Equalizer) -->
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2 10v4" />
-                        <path d="M6 6v12" />
-                        <path d="M10 3v18" />
-                        <path d="M14 8v8" />
-                        <path d="M18 5v14" />
-                        <path d="M22 10v4" />
-                    </svg>
+            <div class="services-grid reveal">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m16 13 5.223-3.482a.5.5 0 0 1 .777.416v8.132a.5.5 0 0 1-.777.416L16 15" />
+                            <rect width="14" height="12" x="2" y="6" rx="2" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Music Video Production</h3>
+                    <p class="service-description">Story-driven, performance-focused, and live music videos tailored to your track's identity. Full production from concept development to high-end color grading.</p>
+                    <div class="service-price">Starting at $750</div>
                 </div>
-                <h3 class="service-title">Visualizers & Lyric Videos</h3>
-                <p class="service-description">Audio-reactive stream videos, motion graphics, and dynamic kinetic typography. High-impact visuals designed for song releases, YouTube drops, and live streams.</p>
-                <div class="service-price">Starting at $150</div>
-            </div>
 
-            <!-- Commercial & Promo Content (Megaphone / Broadcast) -->
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                        <path d="m3 11 18-5v12L3 13v-2z" />
-                        <path d="M11.6 16.8 a 3 3 0 1 1 -5.8-1.6" />
-                    </svg>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 10v4" />
+                            <path d="M6 6v12" />
+                            <path d="M10 3v18" />
+                            <path d="M14 8v8" />
+                            <path d="M18 5v14" />
+                            <path d="M22 10v4" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Visualizers & Lyric Videos</h3>
+                    <p class="service-description">Audio-reactive stream videos, motion graphics, and dynamic kinetic typography. High-impact visuals designed for song releases, YouTube drops, and live streams.</p>
+                    <div class="service-price">Starting at $150</div>
                 </div>
-                <h3 class="service-title">Commercial & Promo Content</h3>
-                <p class="service-description">High-converting promo videos, brand spotlights, and advertisement content. Eye-catching visuals optimized for web campaigns and social media marketing.</p>
-                <div class="service-price">Custom Pricing</div>
-            </div>
 
-            <!-- Wedding Videography & Photo (Hearts / Rings) -->
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                    </svg>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m3 11 18-5v12L3 13v-2z" />
+                            <path d="M11.6 16.8 a 3 3 0 1 1 -5.8-1.6" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Commercial & Promo Content</h3>
+                    <p class="service-description">High-converting promo videos, brand spotlights, and advertisement content. Eye-catching visuals optimized for web campaigns and social media marketing.</p>
+                    <div class="service-price">Custom Pricing</div>
                 </div>
-                <h3 class="service-title">Wedding Videography & Photo</h3>
-                <p class="service-description">Comprehensive wedding day coverage, capturing every raw moment from preparation to reception. Includes cinematic highlight films, photo sets, and full event documentation.</p>
-                <div class="service-price">Starting at $900</div>
-            </div>
 
-            <!-- Portrait Photography (Camera & Lens) -->
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
-                        <circle cx="12" cy="13" r="3" />
-                    </svg>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Wedding Videography & Photo</h3>
+                    <p class="service-description">Comprehensive wedding day coverage, capturing every raw moment from preparation to reception. Includes cinematic highlight films, photo sets, and full event documentation.</p>
+                    <div class="service-price">Starting at $900</div>
                 </div>
-                <h3 class="service-title">Portrait Photography</h3>
-                <p class="service-description">Band press photos, creative portraits, personal branding, and lifestyle sessions. Guided posing and professional retouching to build your signature visual identity.</p>
-                <div class="service-price">Starting at $150</div>
-            </div>
 
-            <!-- Digital Design & Merch (Palette / Vector Pen) -->
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
-                        <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
-                        <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
-                        <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
-                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.92 0 1.7-.71 1.7-1.63 0-.43-.16-.83-.43-1.13-.27-.31-.44-.72-.44-1.17 0-.92.78-1.67 1.7-1.67h2.5c2.73 0 4.97-2.24 4.97-4.97 0-5.22-4.45-9.43-10-9.43z" />
-                    </svg>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+                            <circle cx="12" cy="13" r="3" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Portrait Photography</h3>
+                    <p class="service-description">Band press photos, creative portraits, personal branding, and lifestyle sessions. Guided posing and professional retouching to build your signature visual identity.</p>
+                    <div class="service-price">Starting at $150</div>
                 </div>
-                <h3 class="service-title">Digital Design & Merch</h3>
-                <p class="service-description">Custom album artwork, apparel graphics, sticker designs, and brand assets. Cohesive, production-ready digital artwork crafted specifically for physical printing and digital releases.</p>
-                <div class="service-price">Starting at $200</div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+                            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+                            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+                            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.92 0 1.7-.71 1.7-1.63 0-.43-.16-.83-.43-1.13-.27-.31-.44-.72-.44-1.17 0-.92.78-1.67 1.7-1.67h2.5c2.73 0 4.97-2.24 4.97-4.97 0-5.22-4.45-9.43-10-9.43z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Digital Design & Merch</h3>
+                    <p class="service-description">Custom album artwork, apparel graphics, sticker designs, and brand assets. Cohesive, production-ready digital artwork crafted specifically for physical printing and digital releases.</p>
+                    <div class="service-price">Starting at $200</div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
- <!-- Contact Section -->
-<section class="contact-section" id="contact">
-    <style>
-        /* Container grid setup */
-        #contact .contact-info {
-            display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important;
-            gap: 20px !important;
-            width: 100% !important;
-            max-width: 1000px !important;
-            margin: 0 auto !important;
-            justify-content: center !important;
-        }
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's discuss your next project</p>
+            </div>
 
-        /* Card container */
-        #contact .contact-item {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            text-align: center !important;
-            width: 100% !important;
-            padding: 30px 15px !important;
-            box-sizing: border-box !important;
-            margin: 0 !important;
-        }
+            <div class="contact-info reveal">
+                <a href="mailto:danny@deadlitstudios.com" class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-label">EMAIL</div>
+                    <div class="contact-value">danny@deadlitstudios.com</div>
+                </a>
 
-        /* 1. Fix stretched icon oval */
-        #contact .contact-icon {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            width: 50px !important;  /* Locks width so pseudo-element glow/background stays circular */
-            height: 50px !important; /* Locks height */
-            margin: 0 auto 12px auto !important;
-            border-radius: 50% !important;
-            flex-shrink: 0 !important;
-        }
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2M7.6 4C5.61 4 4 5.61 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C18.39 20 20 18.39 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6M17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75S17.94 8 17.25 8S16 7.44 16 6.75S16.56 5.5 17.25 5.5M12 7C14.76 7 17 9.24 17 12S14.76 17 12 17S7 14.76 7 12S9.24 7 12 7M12 9C10.34 9 9 10.34 9 12S10.34 15 12 15S15 13.66 15 12S13.66 9 12 9Z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-label">INSTAGRAM</div>
+                    <div class="contact-value">@deadlitstudios</div>
+                </a>
 
-        #contact .contact-icon svg {
-            width: 24px !important;
-            height: 24px !important;
-        }
-
-        /* 2. Force text labels and email directly into center alignment */
-        #contact .contact-label,
-        #contact .contact-value {
-            display: block !important;
-            width: 100% !important;
-            text-align: center !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-        }
-
-        #contact .contact-value {
-            font-size: 0.82rem !important;
-            word-break: break-all !important;
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            #contact .contact-info {
-                grid-template-columns: 1fr !important;
-            }
-        }
-    </style>
-
-    <div class="contact-container">
-        <div class="section-header reveal">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Let's discuss your next project</p>
+                <a href="#" class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22S19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9S10.62 6.5 12 6.5S14.5 7.62 14.5 9S13.38 11.5 12 11.5Z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-label">LOCATION</div>
+                    <div class="contact-value">Denver, CO</div>
+                </a>
+            </div>
         </div>
+    </section>
 
-        <div class="contact-info reveal">
-            <a href="mailto:danny@deadlitstudios.com" class="contact-item">
-                <div class="contact-icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/>
-                    </svg>
-                </div>
-                <div class="contact-label">EMAIL</div>
-                <div class="contact-value">danny@deadlitstudios.com</div>
-            </a>
-
-            <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-item">
-                <div class="contact-icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2M7.6 4C5.61 4 4 5.61 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C18.39 20 20 18.39 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6M17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75S17.94 8 17.25 8S16 7.44 16 6.75S16.56 5.5 17.25 5.5M12 7C14.76 7 17 9.24 17 12S14.76 17 12 17S7 14.76 7 12S9.24 7 12 7M12 9C10.34 9 9 10.34 9 12S10.34 15 12 15S15 13.66 15 12S13.66 9 12 9Z"/>
-                    </svg>
-                </div>
-                <div class="contact-label">INSTAGRAM</div>
-                <div class="contact-value">@deadlitstudios</div>
-            </a>
-
-            <a href="#" class="contact-item">
-                <div class="contact-icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22S19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9S10.62 6.5 12 6.5S14.5 7.62 14.5 9S13.38 11.5 12 11.5Z"/>
-                    </svg>
-                </div>
-                <div class="contact-label">LOCATION</div>
-                <div class="contact-value">Denver, CO</div>
-            </a>
-        </div>
-    </div>
-</section>
-    
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -748,10 +658,20 @@
         </div>
     </footer>
 
+    <!-- Video Popup Modal Markup -->
+    <div class="video-modal" id="videoModal" onclick="if(event.target === this) closeVideoModal()">
+        <div class="video-modal-content">
+            <span class="close-modal-btn" onclick="closeVideoModal()">&times;</span>
+            <div class="iframe-container">
+                <iframe id="videoIframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
     <!-- Template JS File -->
     <script src="templatemo-amber-script.js"></script>
 
-    <!-- Custom Script for Video Modal & Loader Backup -->
+    <!-- Custom Scripts -->
     <script>
         // Force loading screen to hide once page finishes loading
         window.addEventListener('load', function() {
@@ -768,6 +688,22 @@
                 loader.classList.add('hidden');
             }
         }, 1500);
+
+        // Portfolio Category Filter
+        function filterSleek(cat, event) {
+            document.querySelectorAll('.sleek-pill').forEach(btn => btn.classList.remove('active'));
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+
+            document.querySelectorAll('.sleek-card').forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
 
         // Card Click Handler
         function handleCardClick(element, videoUrl) {
