@@ -22,14 +22,6 @@
             padding: 0;
         }
 
-        /* 1. Hide residual template background shapes/decorations */
-        .hero-section::after,
-        body::before,
-        body::after {
-            display: none !important;
-            background: none !important;
-        }
-
         /* Force reveal elements to show even if scroll script fails */
         .reveal {
             opacity: 1 !important;
@@ -56,7 +48,7 @@
             transition: opacity 0.5s ease;
         }
 
-        /* 2. Header & Nav Styling Fix */
+        /* Header & Nav Styling Fix */
         header {
             position: fixed !important;
             top: 0;
@@ -105,7 +97,7 @@
             text-shadow: 0 0 8px var(--deadlit-glow);
         }
 
-        /* 3. Hero Container Styles & Clean Layout */
+        /* Hero Container Styles & Clean Layout */
         .hero-section {
             position: relative;
             min-height: 90vh;
@@ -118,7 +110,7 @@
             border-bottom: 1px solid rgba(134, 192, 216, 0.2);
         }
 
-        /* Clean Background Grid Overlay (No template artifacts) */
+        /* Clean Background Grid Overlay */
         .hero-section::before {
             content: '';
             position: absolute;
@@ -129,6 +121,79 @@
             background-size: 100% 4px, 40px 100%;
             pointer-events: none;
             z-index: 1;
+        }
+
+        /* Organic Bacteria-like Amber Curves & Floating Clusters */
+        .bacteria-cluster {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .amber-shape {
+            position: absolute;
+            background: radial-gradient(circle, rgba(212, 143, 56, 0.35) 0%, rgba(184, 95, 34, 0.1) 60%, transparent 100%);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            filter: blur(1px);
+            animation: floatShape 12s infinite alternate ease-in-out;
+        }
+
+        /* Specific cluster placements and opacities */
+        .shape-1 {
+            top: -10%;
+            left: -5%;
+            width: 350px;
+            height: 350px;
+            opacity: 0.7;
+            border-radius: 30% 70% 50% 50% / 30% 30% 70% 70%;
+        }
+
+        .shape-2 {
+            top: 15%;
+            right: -8%;
+            width: 280px;
+            height: 280px;
+            opacity: 0.4;
+            animation-duration: 16s;
+            animation-delay: -3s;
+        }
+
+        .shape-3 {
+            bottom: -15%;
+            left: 10%;
+            width: 420px;
+            height: 420px;
+            opacity: 0.25;
+            animation-duration: 20s;
+            animation-delay: -6s;
+            border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+        }
+
+        .shape-4 {
+            bottom: 10%;
+            right: 15%;
+            width: 180px;
+            height: 180px;
+            opacity: 0.55;
+            animation-duration: 10s;
+            animation-delay: -1.5s;
+        }
+
+        .shape-5 {
+            top: 45%;
+            left: 3%;
+            width: 120px;
+            height: 120px;
+            opacity: 0.3;
+            animation-duration: 14s;
+        }
+
+        @keyframes floatShape {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            50% { transform: translate(25px, -20px) rotate(8deg) scale(1.05); }
+            100% { transform: translate(-15px, 20px) rotate(-5deg) scale(0.95); }
         }
 
         /* Central Heartbeat Glow Effect */
@@ -667,6 +732,15 @@
 
     <!-- Hero Section -->
     <section class="hero-section" id="home">
+        <!-- Organic Bacteria Amber Shapes Cluster -->
+        <div class="bacteria-cluster">
+            <div class="amber-shape shape-1"></div>
+            <div class="amber-shape shape-2"></div>
+            <div class="amber-shape shape-3"></div>
+            <div class="amber-shape shape-4"></div>
+            <div class="amber-shape shape-5"></div>
+        </div>
+
         <div class="heartbeat-glow"></div>
         <div class="ekg-container">
             <svg class="ekg-svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
