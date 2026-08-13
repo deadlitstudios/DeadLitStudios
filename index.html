@@ -5,14 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeadLit Studios</title>
     <link rel="stylesheet" href="templatemo-amber-folio.css">
-    <!--
-
-    TemplateMo 615 Amber Folio
-
-    https://templatemo.com/tm-615-amber-folio
-
-    -->
     <style>
+        /* DeadLit Studios Dark / Cold-Metallic Theme Overrides */
+        :root {
+            --deadlit-blue: #86c0d8;
+            --deadlit-glow: rgba(134, 192, 216, 0.4);
+            --deadlit-dark-bg: #0a0c10;
+            --deadlit-card-bg: #12161f;
+        }
+
+        body {
+            background-color: var(--deadlit-dark-bg) !important;
+            color: #d1d5db !important;
+            font-family: 'Cinzel', 'Trajan Pro', sans-serif, system-ui;
+        }
+
+        /* Accent & Highlights Override */
+        .play-btn-badge, .cta-button, .service-price {
+            background: linear-gradient(135deg, #74b3ce 0%, #3a728b 100%) !important;
+            color: #080a0e !important;
+            font-weight: 700 !important;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px var(--deadlit-glow) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+
         /* Force Loading Screen to Hide Smoothly */
         .loading-screen.hidden {
             opacity: 0 !important;
@@ -27,9 +44,16 @@
             height: 270px !important;
             max-height: 270px !important;
             aspect-ratio: 16 / 9 !important;
-            border-radius: 12px !important;
+            border-radius: 8px !important;
             overflow: hidden !important;
             cursor: pointer !important;
+            border: 1px solid rgba(134, 192, 216, 0.2) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .coverflow-item:hover {
+            border-color: var(--deadlit-blue) !important;
+            box-shadow: 0 0 20px var(--deadlit-glow) !important;
         }
 
         .portfolio-image {
@@ -42,29 +66,35 @@
         .portfolio-overlay {
             bottom: 0 !important;
             padding: 15px !important;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)) !important;
+            background: linear-gradient(transparent, rgba(10, 12, 16, 0.95)) !important;
         }
 
         .portfolio-title {
             font-size: 1.1rem !important;
             margin-bottom: 2px !important;
-            color: #fff !important;
+            color: #f3f4f6 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .portfolio-category {
+            color: var(--deadlit-blue) !important;
+            text-transform: uppercase;
+            font-size: 0.75rem !important;
+            letter-spacing: 1.5px;
         }
 
         .portfolio-description {
             font-size: 0.85rem !important;
-            color: #ddd !important;
+            color: #9ca3af !important;
             margin-bottom: 8px !important;
         }
 
         .play-btn-badge {
             display: inline-block !important;
             padding: 4px 12px !important;
-            background: #ffb400 !important;
-            color: #000 !important;
-            font-weight: bold !important;
             font-size: 0.75rem !important;
-            border-radius: 20px !important;
+            border-radius: 4px !important;
         }
 
         /* Video Popup Modal Styles */
@@ -76,8 +106,8 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(8px);
+            background-color: rgba(5, 7, 10, 0.95);
+            backdrop-filter: blur(10px);
             align-items: center;
             justify-content: center;
         }
@@ -87,19 +117,25 @@
             width: 90%;
             max-width: 960px;
             background: #000;
-            border-radius: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(134, 192, 216, 0.3);
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(134, 192, 216, 0.2);
         }
 
         .close-modal-btn {
             position: absolute;
             top: -40px;
             right: 0;
-            color: #fff;
+            color: var(--deadlit-blue);
             font-size: 32px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal-btn:hover {
+            color: #fff;
         }
 
         .iframe-container {
@@ -115,6 +151,53 @@
             left: 0;
             width: 100%;
             height: 100%;
+        }
+
+        /* Custom Header & Nav Styling */
+        header {
+            background-color: rgba(10, 12, 16, 0.9) !important;
+            border-bottom: 1px solid rgba(134, 192, 216, 0.15);
+            backdrop-filter: blur(8px);
+        }
+
+        .logo {
+            color: #fff !important;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu a {
+            color: #d1d5db !important;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--deadlit-blue) !important;
+            text-shadow: 0 0 8px var(--deadlit-glow);
+        }
+
+        /* Service Cards Styling */
+        .service-card {
+            background-color: var(--deadlit-card-bg) !important;
+            border: 1px solid rgba(134, 192, 216, 0.15) !important;
+            border-radius: 8px !important;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s !important;
+        }
+
+        .service-card:hover {
+            border-color: var(--deadlit-blue) !important;
+            box-shadow: 0 0 20px rgba(134, 192, 216, 0.15) !important;
+            transform: translateY(-4px);
+        }
+
+        .service-title {
+            color: #fff !important;
+            letter-spacing: 1px;
+        }
+
+        .service-icon svg {
+            fill: var(--deadlit-blue) !important;
         }
 
         @media (max-width: 768px) {
@@ -135,10 +218,7 @@
     <header id="header">
         <nav>
             <a href="#home" class="logo">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 20C16.4 20 20 16.4 20 12C20 7.6 16.4 4 12 4C7.6 4 4 7.6 4 12C4 16.4 7.6 20 12 20M12 2C18.5 2 22 6.5 22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2M14.3 16.2L12 10L9.7 16.2L7 11.3L11.3 7L16.2 9.7L14.3 16.2M8.8 17L12 8L15.2 17L20 12L15.2 7L12 15L8.8 7L4 12L8.8 17Z"/>
-                </svg>
-                Amber Folio
+                DeadLit Studios
             </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home">Home</a></li>
@@ -164,9 +244,9 @@
             <div class="floating-accent accent-3"></div>
         </div>
         <div class="hero-content reveal">
-            <h1 class="hero-title">Capturing Moments</h1>
-            <p class="hero-subtitle">Professional Photography & Film Portfolio</p>
-            <a href="#portfolio" class="cta-button">View My Work</a>
+            <h1 class="hero-title" style="letter-spacing: 3px; text-transform: uppercase;">DeadLit Studios</h1>
+            <p class="hero-subtitle">Cinematic Videography & Visual Production</p>
+            <a href="#portfolio" class="cta-button">View Selected Works</a>
         </div>
     </section>
 
@@ -174,7 +254,7 @@
     <section class="portfolio-section" id="portfolio">
         <div class="section-header reveal">
             <h2 class="section-title">Featured Work</h2>
-            <p class="section-subtitle">Explore my latest music videos, visualizers, and creative projects</p>
+            <p class="section-subtitle">Music videos, visualizers, and heavy visual media</p>
         </div>
 
         <div class="coverflow-wrapper">
@@ -185,8 +265,8 @@
                     <img src="images/templatemo-amber-folio-01.jpg" alt="Music Video" class="portfolio-image">
                     <div class="portfolio-overlay">
                         <div class="portfolio-category">Music Video</div>
-                        <h3 class="portfolio-title">Project Name</h3>
-                        <p class="portfolio-description">Story-driven narrative music video</p>
+                        <h3 class="portfolio-title">Narrative Cut</h3>
+                        <p class="portfolio-description">Story-driven music video production</p>
                         <span class="play-btn-badge">▶ Watch Video</span>
                     </div>
                 </div>
@@ -195,9 +275,9 @@
                 <div class="coverflow-item" data-index="1" onclick="handleCardClick(this, 'https://www.youtube.com/embed/YOUR_VIDEO_ID_2?autoplay=1')">
                     <img src="images/templatemo-amber-folio-02.jpg" alt="Kinetic Lyrics" class="portfolio-image">
                     <div class="portfolio-overlay">
-                        <div class="portfolio-category">Lyric Video</div>
-                        <h3 class="portfolio-title">Kinetic Typography</h3>
-                        <p class="portfolio-description">Audio-reactive stream motion graphics</p>
+                        <div class="portfolio-category">Visualizer</div>
+                        <h3 class="portfolio-title">Kinetic Motion</h3>
+                        <p class="portfolio-description">Audio-reactive motion graphics & lyrics</p>
                         <span class="play-btn-badge">▶ Watch Video</span>
                     </div>
                 </div>
@@ -207,8 +287,8 @@
                     <img src="images/templatemo-amber-folio-03.jpg" alt="Live Performance" class="portfolio-image">
                     <div class="portfolio-overlay">
                         <div class="portfolio-category">Performance</div>
-                        <h3 class="portfolio-title">Live Concert Cut</h3>
-                        <p class="portfolio-description">Multi-cam live music performance</p>
+                        <h3 class="portfolio-title">Live Stage Cut</h3>
+                        <p class="portfolio-description">Multi-cam live music documentation</p>
                         <span class="play-btn-badge">▶ Watch Video</span>
                     </div>
                 </div>
@@ -217,9 +297,9 @@
                 <div class="coverflow-item" data-index="3" onclick="handleCardClick(this, 'https://www.youtube.com/embed/YOUR_VIDEO_ID_4?autoplay=1')">
                     <img src="images/templatemo-amber-folio-04.jpg" alt="Commercial" class="portfolio-image">
                     <div class="portfolio-overlay">
-                        <div class="portfolio-category">Commercial</div>
+                        <div class="portfolio-category">Promo</div>
                         <h3 class="portfolio-title">Brand Spotlight</h3>
-                        <p class="portfolio-description">High-converting social advertisement</p>
+                        <p class="portfolio-description">High-impact media for releases & brands</p>
                         <span class="play-btn-badge">▶ Watch Video</span>
                     </div>
                 </div>
@@ -228,9 +308,9 @@
                 <div class="coverflow-item" data-index="4" onclick="handleCardClick(this, 'https://player.vimeo.com/video/YOUR_VIMEO_ID_1?autoplay=1')">
                     <img src="images/templatemo-amber-folio-05.jpg" alt="Wedding Film" class="portfolio-image">
                     <div class="portfolio-overlay">
-                        <div class="portfolio-category">Wedding</div>
-                        <h3 class="portfolio-title">Cinematic Highlight</h3>
-                        <p class="portfolio-description">Full wedding day video coverage</p>
+                        <div class="portfolio-category">Cinematic</div>
+                        <h3 class="portfolio-title">Event Highlight</h3>
+                        <p class="portfolio-description">Full event documentation and coverage</p>
                         <span class="play-btn-badge">▶ Watch Video</span>
                     </div>
                 </div>
@@ -240,8 +320,8 @@
                     <img src="images/templatemo-amber-folio-06.jpg" alt="Band Press Photos" class="portfolio-image">
                     <div class="portfolio-overlay">
                         <div class="portfolio-category">Portraits</div>
-                        <h3 class="portfolio-title">Band Press Session</h3>
-                        <p class="portfolio-description">Creative portrait and lighting design</p>
+                        <h3 class="portfolio-title">Press Session</h3>
+                        <p class="portfolio-description">Creative band & solo artist portraiture</p>
                         <span class="play-btn-badge">▶ Watch Video</span>
                     </div>
                 </div>
@@ -281,13 +361,12 @@
     <section class="about-section" id="about">
         <div class="about-container reveal">
             <div class="about-image">
-                <img src="images/486466830_9264047680316351_4957741206149788354_n.jpg" alt="Photographer">
+                <img src="images/486466830_9264047680316351_4957741206149788354_n.jpg" alt="Videographer">
             </div>
             <div class="about-content">
-                <h2>About the Artist</h2>
-                <p>With over a decade of experience in professional photography, I specialize in capturing the extraordinary in everyday moments. My journey began with a simple camera and an insatiable curiosity about the world around me.</p>
-                <p>From the bustling streets of urban landscapes to the serene beauty of nature, I strive to tell stories through my lens. Each photograph is a carefully crafted piece of art, designed to evoke emotion and preserve memories that last a lifetime.</p>
-                <p>My work has been featured in numerous galleries and publications worldwide, but my greatest satisfaction comes from creating images that resonate with people on a personal level.</p>
+                <h2>About the Studio</h2>
+                <p>DeadLit Studios specializes in story-driven, heavy visual media, high-contrast cinematography, and creative production tailored to artists, performers, and brands.</p>
+                <p>From narrative music videos to kinetic typography and album visuals, every piece is designed with an emphasis on atmosphere, tone, and visual weight.</p>
                 
                 <div class="stats">
                     <div class="stat-item">
@@ -299,8 +378,8 @@
                         <div class="stat-label">Years</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">"Self Given" Awards</div>
+                        <div class="stat-number">4K</div>
+                        <div class="stat-label">Cinema Rig</div>
                     </div>
                 </div>
             </div>
@@ -312,7 +391,7 @@
         <div class="services-container">
             <div class="section-header reveal">
                 <h2 class="section-title">Services Offered</h2>
-                <p class="section-subtitle">Professional media services tailored to capture your vision</p>
+                <p class="section-subtitle">Professional media production tailored to your vision</p>
             </div>
 
             <div class="services-grid reveal">
@@ -390,38 +469,38 @@
         <div class="contact-container">
             <div class="section-header reveal">
                 <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's create something beautiful together</p>
+                <p class="section-subtitle">Let's discuss your next project</p>
             </div>
 
             <div class="contact-info reveal">
-                <a href="mailto:hello@capture.com" class="contact-item">
+                <a href="mailto:contact@deadlitstudios.com" class="contact-item">
                     <div class="contact-icon">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/>
                         </svg>
                     </div>
                     <div class="contact-label">Email</div>
-                    <div class="contact-value">hello@capture.com</div>
+                    <div class="contact-value">contact@deadlitstudios.com</div>
                 </a>
 
-                <a href="tel:+1234567890" class="contact-item">
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-item">
                     <div class="contact-icon">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z"/>
+                            <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2M7.6 4C5.61 4 4 5.61 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C18.39 20 20 18.39 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6M17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75S17.94 8 17.25 8S16 7.44 16 6.75S16.56 5.5 17.25 5.5M12 7C14.76 7 17 9.24 17 12S14.76 17 12 17S7 14.76 7 12S9.24 7 12 7M12 9C10.34 9 9 10.34 9 12S10.34 15 12 15S15 13.66 15 12S13.66 9 12 9Z"/>
                         </svg>
                     </div>
-                    <div class="contact-label">Phone</div>
-                    <div class="contact-value">+1 (234) 567-890</div>
+                    <div class="contact-label">Instagram</div>
+                    <div class="contact-value">@deadlitstudios</div>
                 </a>
 
-                <a href="https://maps.google.com/?q=New+York+USA" target="_blank" rel="noopener" class="contact-item">
+                <a href="#" class="contact-item">
                     <div class="contact-icon">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22S19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9S10.62 6.5 12 6.5S14.5 7.62 14.5 9S13.38 11.5 12 11.5Z"/>
                         </svg>
                     </div>
-                    <div class="contact-label">Studio</div>
-                    <div class="contact-value">New York, USA</div>
+                    <div class="contact-label">Location</div>
+                    <div class="contact-value">Denver, CO</div>
                 </a>
             </div>
         </div>
@@ -430,31 +509,8 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="social-links">
-                <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2M7.6 4C5.61 4 4 5.61 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C18.39 20 20 18.39 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6M17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75S17.94 8 17.25 8S16 7.44 16 6.75S16.56 5.5 17.25 5.5M12 7C14.76 7 17 9.24 17 12S14.76 17 12 17S7 14.76 7 12S9.24 7 12 7M12 9C10.34 9 9 10.34 9 12S10.34 15 12 15S15 13.66 15 12S13.66 9 12 9Z"/>
-                    </svg>
-                </a>
-                <a href="https://facebook.com/templatemo" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/>
-                    </svg>
-                </a>
-                <a href="https://x.com/minthu" target="_blank" rel="noopener" class="social-link" aria-label="Twitter">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22.46 6C21.69 6.35 20.86 6.58 20 6.69C20.88 6.16 21.56 5.32 21.88 4.31C21.05 4.81 20.13 5.16 19.16 5.36C18.37 4.5 17.26 4 16 4C13.65 4 11.73 5.92 11.73 8.29C11.73 8.63 11.77 8.96 11.84 9.27C8.28 9.09 5.11 7.38 3 4.79C2.63 5.42 2.42 6.16 2.42 6.94C2.42 8.43 3.17 9.75 4.33 10.5C3.62 10.5 2.96 10.3 2.38 10V10.03C2.38 12.11 3.86 13.85 5.82 14.24C5.46 14.34 5.08 14.39 4.69 14.39C4.42 14.39 4.15 14.36 3.89 14.31C4.43 16 6 17.26 7.89 17.29C6.43 18.45 4.58 19.13 2.56 19.13C2.22 19.13 1.88 19.11 1.54 19.07C3.44 20.29 5.74 21 8.23 21C16 21 20.33 14.46 20.33 8.79C20.33 8.6 20.33 8.42 20.32 8.23C21.16 7.63 21.88 6.87 22.46 6Z"/>
-                    </svg>
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 3C19.55 3 20.05 3.21 20.41 3.59C20.79 3.95 21 4.45 21 5V19C21 19.55 20.79 20.05 20.41 20.41C20.05 20.79 19.55 21 19 21H5C4.45 21 3.95 20.79 3.59 20.41C3.21 20.05 3 19.55 3 19V5C3 4.45 3.21 3.95 3.59 3.59C3.95 3.21 4.45 3 5 3H19M18.5 18.5V13.2C18.5 11.87 17.45 10.82 16.12 10.82C15.21 10.82 14.46 11.37 14.17 12.15V11H11.5V18.5H14.17V13.57C14.17 12.82 14.79 12.2 15.54 12.2C16.29 12.2 16.91 12.82 16.91 13.57V18.5H18.5M6.88 9.57C7.63 9.57 8.25 8.96 8.25 8.21C8.25 7.46 7.63 6.84 6.88 6.84C6.13 6.84 5.5 7.46 5.5 8.21C5.5 8.96 6.13 9.57 6.88 9.57M8.21 18.5V11H5.5V18.5H8.21Z"/>
-                    </svg>
-                </a>
-            </div>
             <p class="footer-text">
-                © 2026 Amber Folio Photography. All rights reserved.<br>
-                Design: <a href="https://templatemo.com" target="_blank" rel="noopener">TemplateMo</a>
+                © 2026 DeadLit Studios. All rights reserved.
             </p>
         </div>
     </footer>
