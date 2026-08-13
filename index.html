@@ -250,170 +250,261 @@
         </div>
     </section>
 
-  <!-- Featured Work: Interactive Editorial List -->
-<section class="editorial-section" id="featured-editorial">
+  <!-- Modern Interactive Hover Grid -->
+<section class="sleek-portfolio" id="portfolio">
     <style>
-        #featured-editorial {
-            padding: 80px 20px;
-            max-width: 1200px;
+        #portfolio {
+            padding: 100px 20px;
+            max-width: 1300px;
             margin: 0 auto;
             color: #fff;
+            font-family: system-ui, -apple-system, sans-serif;
         }
 
-        .editorial-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
+        .sleek-header {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
-        /* Project List Stack */
-        .project-list {
-            display: flex;
-            flex-direction: column;
+        .sleek-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(180deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0 0 10px 0;
         }
 
-        .project-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-            transition: opacity 0.3s ease, padding 0.3s ease;
-        }
-
-        .project-item:hover,
-        .project-item.active {
-            padding-left: 10px;
-            border-bottom-color: #fff;
-        }
-
-        .project-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin: 0 0 4px 0;
-        }
-
-        .project-artist {
-            font-size: 0.85rem;
-            color: #aaa;
-        }
-
-        .project-genre {
-            font-size: 0.75rem;
+        .sleek-subtitle {
+            color: #666;
+            font-size: 1rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 4px 10px;
-            border-radius: 20px;
-            color: #ccc;
         }
 
-        /* Dynamic Preview Window */
-        .preview-window {
-            position: sticky;
-            top: 100px;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background: #111;
-            border-radius: 12px;
+        /* Modern Filter Pills */
+        .sleek-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .sleek-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #888;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sleek-pill:hover,
+        .sleek-pill.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+        }
+
+        /* Portfolio Grid */
+        .sleek-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 30px;
+        }
+
+        .sleek-card {
+            position: relative;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            aspect-ratio: 16 / 9;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .preview-img {
+        .sleek-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.4s ease, transform 0.4s ease;
+            opacity: 0.8;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
         }
 
-        @media (max-width: 900px) {
-            .editorial-container {
-                grid-template-columns: 1fr;
-            }
-            .preview-window {
-                position: relative;
-                top: 0;
-                order: -1; /* Display preview above list on mobile */
-            }
+        .sleek-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .sleek-card:hover img {
+            transform: scale(1.08);
+            opacity: 0.4;
+        }
+
+        /* Floating Info Overlay */
+        .sleek-overlay {
+            position: absolute;
+            inset: 0;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
+            z-index: 2;
+        }
+
+        .sleek-tag {
+            align-self: flex-start;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .sleek-details {
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+
+        .sleek-card:hover .sleek-details {
+            transform: translateY(0);
+        }
+
+        .sleek-project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+            color: #fff;
+        }
+
+        .sleek-artist {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin: 0;
+        }
+
+        /* Play Button Icon on Hover */
+        .sleek-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.6);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 3;
+        }
+
+        .sleek-card:hover .sleek-play {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .sleek-play svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+            margin-left: 3px;
         }
     </style>
 
-    <div class="section-header" style="text-align: center; margin-bottom: 50px;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 8px;">Featured Works</h2>
-        <p style="color: #888;">Hover over a project to preview</p>
+    <div class="sleek-header">
+        <h2 class="sleek-title">FEATURED WORK</h2>
+        <p class="sleek-subtitle">Selected Visual Productions</p>
     </div>
 
-    <div class="editorial-container">
-        <!-- Left: Project Titles -->
-        <div class="project-list">
-            <div class="project-item active" onmouseenter="updatePreview('heavy-1.jpg')" onclick="openVideo('heavy-1-link')">
-                <div class="project-info">
-                    <span class="project-name">Song Name Title</span>
-                    <span class="project-artist">Band Name</span>
-                </div>
-                <span class="project-genre">Heavy / Metal</span>
-            </div>
+    <!-- Category Filters -->
+    <div class="sleek-filters">
+        <button class="sleek-pill active" onclick="filterSleek('all')">All</button>
+        <button class="sleek-pill" onclick="filterSleek('heavy')">Heavy / Metal</button>
+        <button class="sleek-pill" onclick="filterSleek('hiphop')">Hip-Hop</button>
+        <button class="sleek-pill" onclick="filterSleek('visualizer')">Visualizers</button>
+        <button class="sleek-pill" onclick="filterSleek('commercial')">Commercial</button>
+    </div>
 
-            <div class="project-item" onmouseenter="updatePreview('hiphop-1.jpg')" onclick="openVideo('hiphop-1-link')">
-                <div class="project-info">
-                    <span class="project-name">Track Title</span>
-                    <span class="project-artist">Artist Name</span>
-                </div>
-                <span class="project-genre">Hip-Hop</span>
+    <!-- Cards Grid -->
+    <div class="sleek-grid">
+        <div class="sleek-card" data-cat="heavy">
+            <img src="thumb1.jpg" alt="Project">
+            <div class="sleek-play">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </div>
-
-            <div class="project-item" onmouseenter="updatePreview('commercial-1.jpg')" onclick="openVideo('commercial-1-link')">
-                <div class="project-info">
-                    <span class="project-name">Brand Commercial</span>
-                    <span class="project-artist">Company Name</span>
+            <div class="sleek-overlay">
+                <span class="sleek-tag">Heavy / Metal</span>
+                <div class="sleek-details">
+                    <h3 class="sleek-project-title">Track Title</h3>
+                    <p class="sleek-artist">Band Name</p>
                 </div>
-                <span class="project-genre">Commercial</span>
-            </div>
-
-            <div class="project-item" onmouseenter="updatePreview('visualizer-1.jpg')" onclick="openVideo('visualizer-1-link')">
-                <div class="project-info">
-                    <span class="project-name">Kinetic Lyric Video</span>
-                    <span class="project-artist">Artist Name</span>
-                </div>
-                <span class="project-genre">Visualizer</span>
             </div>
         </div>
 
-        <!-- Right: Dynamic Preview Image/Video -->
-        <div class="preview-window">
-            <img id="active-preview" class="preview-img" src="heavy-1.jpg" alt="Video Preview">
+        <div class="sleek-card" data-cat="hiphop">
+            <img src="thumb2.jpg" alt="Project">
+            <div class="sleek-play">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="sleek-overlay">
+                <span class="sleek-tag">Hip-Hop</span>
+                <div class="sleek-details">
+                    <h3 class="sleek-project-title">Single Release</h3>
+                    <p class="sleek-artist">Artist Name</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sleek-card" data-cat="commercial">
+            <img src="thumb3.jpg" alt="Project">
+            <div class="sleek-play">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="sleek-overlay">
+                <span class="sleek-tag">Commercial</span>
+                <div class="sleek-details">
+                    <h3 class="sleek-project-title">Brand Campaign</h3>
+                    <p class="sleek-artist">Client Spotlight</p>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        function updatePreview(imageSrc) {
-            const previewImg = document.getElementById('active-preview');
-            previewImg.style.opacity = '0.3';
-            setTimeout(() => {
-                previewImg.src = imageSrc;
-                previewImg.style.opacity = '1';
-            }, 150);
-        }
+        function filterSleek(cat) {
+            document.querySelectorAll('.sleek-pill').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
 
-        // Highlight active item on hover
-        document.querySelectorAll('.project-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                document.querySelectorAll('.project-item').forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
+            document.querySelectorAll('.sleek-card').forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
             });
-        });
+        }
     </script>
 </section>
-
     <!-- About Section -->
     <section class="about-section" id="about">
         <div class="about-container reveal">
