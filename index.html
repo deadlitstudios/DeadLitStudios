@@ -29,6 +29,11 @@
             visibility: visible !important;
         }
 
+        /* Global Subtitle Color Fix to Match Cold Theme */
+        .section-subtitle, .sleek-subtitle {
+            color: #94a3b8 !important;
+        }
+
         /* Accent & Highlights Override */
         .play-btn-badge, .cta-button, .service-price {
             background: linear-gradient(135deg, #74b3ce 0%, #3a728b 100%) !important;
@@ -335,13 +340,6 @@
             margin: 0 0 10px 0;
         }
 
-        .sleek-subtitle {
-            color: #666;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
         .sleek-filters {
             display: flex;
             justify-content: center;
@@ -568,48 +566,49 @@
             color: var(--deadlit-blue);
         }
 
-        /* Sleek Contact Section Overrides */
+        /* Sleek Contact Section Overrides (Balanced Vertical Card Grid) */
         .contact-section {
             padding: 100px 20px;
             background: radial-gradient(circle at center, #0e131d 0%, #080a0e 100%);
         }
 
         .contact-glass-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
             width: 100%;
             max-width: 1100px;
             margin: 40px auto 0 auto;
-            background: rgba(18, 22, 31, 0.6);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(134, 192, 216, 0.15);
-            border-radius: 12px;
-            padding: 20px 24px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
         .contact-item {
             display: flex;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
             gap: 14px;
-            flex: 1;
-            min-width: 0;
-            padding: 12px 10px;
+            background: rgba(18, 22, 31, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(134, 192, 216, 0.15);
+            border-radius: 12px;
+            padding: 35px 20px;
             text-decoration: none;
             color: inherit;
-            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .contact-item:not(.static-item):hover {
-            background: rgba(134, 192, 216, 0.06);
-            transform: translateY(-2px);
+            border-color: var(--deadlit-blue);
+            background: rgba(18, 22, 31, 0.85);
+            transform: translateY(-4px);
+            box-shadow: 0 0 25px rgba(134, 192, 216, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         .contact-item:not(.static-item):hover .contact-icon {
             border-color: var(--deadlit-blue);
-            box-shadow: 0 0 12px var(--deadlit-glow);
+            box-shadow: 0 0 15px var(--deadlit-glow);
+            transform: scale(1.05);
         }
 
         .contact-item:not(.static-item):hover .contact-value {
@@ -620,8 +619,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 44px;
-            height: 44px;
+            width: 54px;
+            height: 54px;
             background: rgba(134, 192, 216, 0.04);
             border: 1px solid rgba(134, 192, 216, 0.15);
             border-radius: 50%;
@@ -630,16 +629,16 @@
         }
 
         .contact-icon svg {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             fill: var(--deadlit-blue);
         }
 
         .contact-meta {
             display: flex;
             flex-direction: column;
-            gap: 3px;
-            min-width: 0;
+            gap: 6px;
+            width: 100%;
         }
 
         .contact-label {
@@ -651,7 +650,7 @@
         }
 
         .contact-value {
-            font-size: 0.82rem;
+            font-size: 0.9rem;
             color: #cbd5e1;
             font-weight: 500;
             white-space: nowrap;
@@ -660,28 +659,10 @@
             transition: color 0.3s ease;
         }
 
-        .contact-divider {
-            width: 1px;
-            height: 40px;
-            background: rgba(134, 192, 216, 0.15);
-            margin: 0 6px;
-            flex-shrink: 0;
-        }
-
         @media (max-width: 850px) {
             .contact-glass-wrapper {
-                flex-direction: column;
-                padding: 15px;
-                gap: 10px;
-            }
-            .contact-divider {
-                width: 100%;
-                height: 1px;
-                margin: 5px 0;
-            }
-            .contact-item {
-                width: 100%;
-                justify-content: flex-start;
+                grid-template-columns: 1fr;
+                max-width: 450px;
             }
         }
 
@@ -1003,8 +984,6 @@
                     </div>
                 </a>
 
-                <div class="contact-divider"></div>
-
                 <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-item">
                     <div class="contact-icon">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1016,8 +995,6 @@
                         <span class="contact-value">@deadlitstudios</span>
                     </div>
                 </a>
-
-                <div class="contact-divider"></div>
 
                 <div class="contact-item static-item">
                     <div class="contact-icon">
