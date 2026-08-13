@@ -466,6 +466,48 @@
 
   <!-- Contact Section -->
 <section class="contact-section" id="contact">
+    <style>
+        /* Embedded styling overrides to fix alignment directly inside this section */
+        #contact .contact-info {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+            align-items: stretch !important;
+            gap: 20px !important;
+            width: 100% !important;
+            max-width: 1100px !important;
+            margin: 0 auto !important;
+        }
+
+        #contact .contact-item {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            flex: 1 1 280px !important;
+            max-width: 340px !important;
+            padding: 30px 15px !important;
+            box-sizing: border-box !important;
+            margin: 0 !important;
+        }
+
+        #contact .contact-icon,
+        #contact .contact-label,
+        #contact .contact-value {
+            text-align: center !important;
+            width: 100% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            display: block !important;
+        }
+
+        #contact .contact-value {
+            font-size: 0.85rem !important; /* Slightly scales down text so long emails fit cleanly */
+            word-break: break-all !important;
+        }
+    </style>
+
     <div class="contact-container">
         <div class="section-header reveal">
             <h2 class="section-title">Get In Touch</h2>
@@ -473,7 +515,7 @@
         </div>
 
         <div class="contact-info reveal">
-            <a href="mailto:Danny@DeadLitStudios.com" class="contact-item">
+            <a href="mailto:danny@deadlitstudios.com" class="contact-item">
                 <div class="contact-icon">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/>
@@ -501,46 +543,6 @@
                 </div>
                 <div class="contact-label">Location</div>
                 <div class="contact-value">Denver, CO</div>
-                /* 1. Force the container grid to center items and give equal spacing */
-.contact-info {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
-    gap: 20px !important;
-    justify-content: center !important;
-    align-items: stretch !important;
-    width: 100% !important;
-    max-width: 1000px !important;
-    margin: 0 auto !important;
-}
-
-/* 2. Force each card to center its inner content horizontally and vertically */
-.contact-item {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    padding: 30px 15px !important; /* Internal breathing room */
-    box-sizing: border-box !important;
-    width: 100% !important;
-}
-
-/* 3. Ensure icon, label, and value inside the card stay perfectly centered */
-.contact-icon, 
-.contact-label, 
-.contact-value {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
-    display: block !important;
-    width: 100% !important;
-}
-
-/* 4. Handle long email text gracefully */
-.contact-value {
-    font-size: 0.88rem !important; /* Scale down slightly so it fits inside the card without pushing margins */
-    word-break: break-all !important; /* Ensures long domains don't push the card out of alignment */
-}
             </a>
         </div>
     </div>
