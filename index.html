@@ -480,7 +480,7 @@
                     </svg>
                 </div>
                 <div class="contact-label">Email</div>
-                <div class="contact-value">Danny@DeadLitStudios.com</div>
+                <div class="contact-value">danny@deadlitstudios.com</div>
             </a>
 
             <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-item">
@@ -501,6 +501,46 @@
                 </div>
                 <div class="contact-label">Location</div>
                 <div class="contact-value">Denver, CO</div>
+                /* 1. Force the container grid to center items and give equal spacing */
+.contact-info {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+    gap: 20px !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+}
+
+/* 2. Force each card to center its inner content horizontally and vertically */
+.contact-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 30px 15px !important; /* Internal breathing room */
+    box-sizing: border-box !important;
+    width: 100% !important;
+}
+
+/* 3. Ensure icon, label, and value inside the card stay perfectly centered */
+.contact-icon, 
+.contact-label, 
+.contact-value {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+/* 4. Handle long email text gracefully */
+.contact-value {
+    font-size: 0.88rem !important; /* Scale down slightly so it fits inside the card without pushing margins */
+    word-break: break-all !important; /* Ensures long domains don't push the card out of alignment */
+}
             </a>
         </div>
     </div>
