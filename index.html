@@ -38,6 +38,70 @@
             transition: opacity 0.5s ease;
         }
 
+        /* Hero Shapes Container Positioning */
+        .hero-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Base EKG Line Style */
+        .ekg-line {
+            position: absolute;
+            width: 100%;
+            height: 120px;
+            opacity: 0.35;
+        }
+
+        .ekg-line path {
+            fill: none;
+            stroke: var(--deadlit-blue);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 0 8px var(--deadlit-blue));
+            
+            /* Creates the dashed "pulse line" look */
+            stroke-dasharray: 1200;
+            stroke-dashoffset: 1200;
+            animation: ekgPulse 4s linear infinite;
+        }
+
+        /* Top EKG Line Placement */
+        .ekg-1 {
+            top: 25%;
+        }
+
+        /* Bottom/Secondary EKG Line Placement */
+        .ekg-2 {
+            top: 65%;
+            opacity: 0.2;
+        }
+
+        .ekg-2 path {
+            stroke-width: 2;
+            animation-delay: 2s; /* Staggered timing */
+            animation-duration: 5s;
+        }
+
+        /* Keyframe Pulse Animation */
+        @keyframes ekgPulse {
+            0% {
+                stroke-dashoffset: 1200;
+            }
+            50% {
+                stroke-dashoffset: 0;
+            }
+            100% {
+                stroke-dashoffset: -1200;
+            }
+        }
+
         /* 16:9 Widescreen Coverflow Overrides */
         .coverflow-item {
             width: 480px !important;
@@ -223,6 +287,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#cinema-work">Directing</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -238,10 +303,17 @@
     <!-- Hero Section -->
     <section class="hero-section" id="home">
         <div class="hero-bg"></div>
+        <!-- Hero Section Shapes Container -->
         <div class="hero-shapes">
-            <div class="floating-accent accent-1"></div>
-            <div class="floating-accent accent-2"></div>
-            <div class="floating-accent accent-3"></div>
+            <!-- SVG EKG Line 1 -->
+            <svg class="ekg-line ekg-1" viewBox="0 0 1200 150" preserveAspectRatio="none">
+                <path d="M 0,75 L 300,75 L 320,75 L 330,30 L 340,120 L 350,15 L 365,135 L 380,75 L 400,75 L 1200,75" />
+            </svg>
+
+            <!-- SVG EKG Line 2 (Secondary background line, slightly offset) -->
+            <svg class="ekg-line ekg-2" viewBox="0 0 1200 150" preserveAspectRatio="none">
+                <path d="M 0,75 L 600,75 L 620,75 L 630,30 L 640,120 L 650,15 L 665,135 L 680,75 L 700,75 L 1200,75" />
+            </svg>
         </div>
         <div class="hero-content reveal">
             <h1 class="hero-title" style="letter-spacing: 3px; text-transform: uppercase;">DeadLit Studios</h1>
@@ -347,6 +419,179 @@
         </div>
     </section>
 
+    <!-- Full-Width Split Cinematic Showcase -->
+    <section class="cinema-section" id="cinema-work">
+        <style>
+            #cinema-work {
+                padding: 80px 0;
+                background: #000;
+                color: #fff;
+            }
+
+            .cinema-header {
+                max-width: 1200px;
+                margin: 0 auto 40px auto;
+                padding: 0 20px;
+            }
+
+            .cinema-header h2 {
+                font-size: 2.5rem;
+                font-weight: 800;
+                letter-spacing: -1px;
+                margin: 0;
+            }
+
+            .cinema-list {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cinema-item {
+                position: relative;
+                width: 100%;
+                height: 140px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 5%;
+                box-sizing: border-box;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                cursor: pointer;
+                overflow: hidden;
+                transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .cinema-item:last-child {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* Hover expansion */
+            .cinema-item:hover {
+                height: 220px;
+            }
+
+            /* Background image container inside row */
+            .cinema-bg {
+                position: absolute;
+                inset: 0;
+                background-size: cover;
+                background-position: center;
+                opacity: 0.15;
+                filter: grayscale(80%);
+                transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s ease;
+                z-index: 1;
+            }
+
+            .cinema-item:hover .cinema-bg {
+                opacity: 0.45;
+                filter: grayscale(0%);
+                transform: scale(1.03);
+            }
+
+            .cinema-content {
+                position: relative;
+                z-index: 2;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .cinema-number {
+                font-size: 0.9rem;
+                color: #555;
+                font-family: monospace;
+            }
+
+            .cinema-title-group h3 {
+                font-size: clamp(1.5rem, 3vw, 2.5rem);
+                font-weight: 700;
+                margin: 0;
+                transition: transform 0.3s ease;
+            }
+
+            .cinema-item:hover .cinema-title-group h3 {
+                transform: translateX(10px);
+            }
+
+            .cinema-artist {
+                font-size: 0.9rem;
+                color: #aaa;
+                margin-top: 4px;
+            }
+
+            .cinema-meta {
+                position: relative;
+                z-index: 2;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .cinema-genre-badge {
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                padding: 6px 14px;
+                border-radius: 30px;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(5px);
+            }
+        </style>
+
+        <div class="cinema-header">
+            <h2>SELECTED DIRECTED WORKS</h2>
+        </div>
+
+        <div class="cinema-list">
+            <!-- Project 1 -->
+            <div class="cinema-item">
+                <div class="cinema-bg" style="background-image: url('heavy-bg.jpg');"></div>
+                <div class="cinema-content">
+                    <span class="cinema-number">/ 01</span>
+                    <div class="cinema-title-group">
+                        <h3>TRACK TITLE</h3>
+                        <div class="cinema-artist">Band Name • Heavy / Metalcore</div>
+                    </div>
+                </div>
+                <div class="cinema-meta">
+                    <span class="cinema-genre-badge">Music Video</span>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="cinema-item">
+                <div class="cinema-bg" style="background-image: url('hiphop-bg.jpg');"></div>
+                <div class="cinema-content">
+                    <span class="cinema-number">/ 02</span>
+                    <div class="cinema-title-group">
+                        <h3>TRACK TITLE</h3>
+                        <div class="cinema-artist">Artist Name • Hip-Hop / Rap</div>
+                    </div>
+                </div>
+                <div class="cinema-meta">
+                    <span class="cinema-genre-badge">Performance</span>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="cinema-item">
+                <div class="cinema-bg" style="background-image: url('commercial-bg.jpg');"></div>
+                <div class="cinema-content">
+                    <span class="cinema-number">/ 03</span>
+                    <div class="cinema-title-group">
+                        <h3>BRAND CAMPAIGN</h3>
+                        <div class="cinema-artist">Company Name • Commercial</div>
+                    </div>
+                </div>
+                <div class="cinema-meta">
+                    <span class="cinema-genre-badge">Spotlight</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Video Lightbox Modal -->
     <div id="videoModal" class="video-modal" onclick="closeVideoModal()">
         <div class="video-modal-content" onclick="event.stopPropagation()">
@@ -395,7 +640,7 @@
             </div>
 
             <div class="services-grid reveal">
-                <!-- Music Video Production -->
+                <!-- Music Video Production (Video Camera / Clapperboard) -->
                 <div class="service-card">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -408,7 +653,7 @@
                     <div class="service-price">Starting at $750</div>
                 </div>
 
-                <!-- Visualizers & Lyric Videos -->
+                <!-- Visualizers & Lyric Videos (Audio Waveform / Equalizer) -->
                 <div class="service-card">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -425,7 +670,7 @@
                     <div class="service-price">Starting at $150</div>
                 </div>
 
-                <!-- Commercial & Promo Content -->
+                <!-- Commercial & Promo Content (Megaphone / Broadcast) -->
                 <div class="service-card">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -438,7 +683,7 @@
                     <div class="service-price">Custom Pricing</div>
                 </div>
 
-                <!-- Wedding Videography & Photo -->
+                <!-- Wedding Videography & Photo (Hearts / Rings) -->
                 <div class="service-card">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -450,7 +695,7 @@
                     <div class="service-price">Starting at $900</div>
                 </div>
 
-                <!-- Portrait Photography -->
+                <!-- Portrait Photography (Camera & Lens) -->
                 <div class="service-card">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -463,7 +708,7 @@
                     <div class="service-price">Starting at $150</div>
                 </div>
 
-                <!-- Digital Design & Merch -->
+                <!-- Digital Design & Merch (Palette / Vector Pen) -->
                 <div class="service-card">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -509,13 +754,13 @@
                 margin: 0 !important;
             }
 
-            /* 1. Fix stretched icon oval */
+            /* Fix icon centering */
             #contact .contact-icon {
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
-                width: 50px !important;  /* Locks width so pseudo-element glow/background stays circular */
-                height: 50px !important; /* Locks height */
+                width: 50px !important;
+                height: 50px !important;
                 margin: 0 auto 12px auto !important;
                 border-radius: 50% !important;
                 flex-shrink: 0 !important;
@@ -526,7 +771,7 @@
                 height: 24px !important;
             }
 
-            /* 2. Force text labels and email directly into center alignment */
+            /* Text alignment overrides */
             #contact .contact-label,
             #contact .contact-value {
                 display: block !important;
@@ -560,7 +805,7 @@
             <div class="contact-info reveal">
                 <a href="mailto:danny@deadlitstudios.com" class="contact-item">
                     <div class="contact-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/>
                         </svg>
                     </div>
@@ -568,20 +813,20 @@
                     <div class="contact-value">danny@deadlitstudios.com</div>
                 </a>
 
-                <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-item">
+                <a href="https://instagram.com" target="_blank" class="contact-item">
                     <div class="contact-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2M7.6 4C5.61 4 4 5.61 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C18.39 20 20 18.39 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6M17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75S17.94 8 17.25 8S16 7.44 16 6.75S16.56 5.5 17.25 5.5M12 7C14.76 7 17 9.24 17 12S14.76 17 12 17S7 14.76 7 12S9.24 7 12 7M12 9C10.34 9 9 10.34 9 12S10.34 15 12 15S15 13.66 15 12S13.66 9 12 9Z"/>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
                     </div>
                     <div class="contact-label">INSTAGRAM</div>
                     <div class="contact-value">@deadlitstudios</div>
                 </a>
 
-                <a href="#" class="contact-item">
+                <a href="#contact" class="contact-item">
                     <div class="contact-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22S19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9S10.62 6.5 12 6.5S14.5 7.62 14.5 9S13.38 11.5 12 11.5Z"/>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
                     </div>
                     <div class="contact-label">LOCATION</div>
@@ -590,62 +835,32 @@
             </div>
         </div>
     </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p class="footer-text">
-                © 2026 DeadLit Studios. All rights reserved.
-            </p>
-        </div>
-    </footer>
 
-    <!-- Template JS File -->
-    <script src="templatemo-amber-script.js"></script>
-
-    <!-- Custom Script for Video Modal & Loader Backup -->
+    <!-- JavaScript Modal and Navigation Handler -->
     <script>
-        // Force loading screen to hide once page finishes loading
-        window.addEventListener('load', function() {
+        function handleCardClick(cardElement, videoUrl) {
+            const videoIframe = document.getElementById('videoIframe');
+            const videoModal = document.getElementById('videoModal');
+            if (videoIframe && videoModal) {
+                videoIframe.src = videoUrl;
+                videoModal.style.display = 'flex';
+            }
+        }
+
+        function closeVideoModal() {
+            const videoIframe = document.getElementById('videoIframe');
+            const videoModal = document.getElementById('videoModal');
+            if (videoIframe && videoModal) {
+                videoIframe.src = '';
+                videoModal.style.display = 'none';
+            }
+        }
+
+        // Hide loading screen when window is ready
+        window.addEventListener('load', () => {
             const loader = document.getElementById('loadingScreen');
             if (loader) {
                 loader.classList.add('hidden');
-            }
-        });
-
-        // Backup safety timeout to hide loader if JS hangs
-        setTimeout(function() {
-            const loader = document.getElementById('loadingScreen');
-            if (loader && !loader.classList.contains('hidden')) {
-                loader.classList.add('hidden');
-            }
-        }, 1500);
-
-        // Card Click Handler
-        function handleCardClick(element, videoUrl) {
-            openVideoModal(videoUrl);
-        }
-
-        // Open Modal
-        function openVideoModal(videoUrl) {
-            const modal = document.getElementById('videoModal');
-            const iframe = document.getElementById('videoIframe');
-            iframe.src = videoUrl;
-            modal.style.display = 'flex';
-        }
-
-        // Close Modal
-        function closeVideoModal() {
-            const modal = document.getElementById('videoModal');
-            const iframe = document.getElementById('videoIframe');
-            iframe.src = ''; 
-            modal.style.display = 'none';
-        }
-
-        // Close on ESC key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeVideoModal();
             }
         });
     </script>
