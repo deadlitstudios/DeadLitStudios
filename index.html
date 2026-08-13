@@ -464,9 +464,10 @@
         </div>
     </section>
 
-  <!-- Contact Section -->
+ <!-- Contact Section -->
 <section class="contact-section" id="contact">
     <style>
+        /* Container grid setup */
         #contact .contact-info {
             display: grid !important;
             grid-template-columns: repeat(3, 1fr) !important;
@@ -477,6 +478,7 @@
             justify-content: center !important;
         }
 
+        /* Card container */
         #contact .contact-item {
             display: flex !important;
             flex-direction: column !important;
@@ -487,27 +489,43 @@
             padding: 30px 15px !important;
             box-sizing: border-box !important;
             margin: 0 !important;
-            overflow: hidden !important;
         }
 
-        #contact .contact-icon,
+        /* 1. Fix stretched icon oval */
+        #contact .contact-icon {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 50px !important;  /* Locks width so pseudo-element glow/background stays circular */
+            height: 50px !important; /* Locks height */
+            margin: 0 auto 12px auto !important;
+            border-radius: 50% !important;
+            flex-shrink: 0 !important;
+        }
+
+        #contact .contact-icon svg {
+            width: 24px !important;
+            height: 24px !important;
+        }
+
+        /* 2. Force text labels and email directly into center alignment */
         #contact .contact-label,
         #contact .contact-value {
-            text-align: center !important;
-            width: 100% !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
             display: block !important;
+            width: 100% !important;
+            text-align: center !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
         }
 
         #contact .contact-value {
-            font-size: 0.8rem !important; /* Scaled down slightly to guarantee centered single-line fit */
-            white-space: nowrap !important;
-            overflow: hidden !important;
-            text-overflow: ellipsis !important;
+            font-size: 0.82rem !important;
+            word-break: break-all !important;
         }
 
-        /* Mobile fallback so it stacks cleanly on small screens */
+        /* Mobile responsiveness */
         @media (max-width: 768px) {
             #contact .contact-info {
                 grid-template-columns: 1fr !important;
@@ -528,7 +546,7 @@
                         <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/>
                     </svg>
                 </div>
-                <div class="contact-label">Email</div>
+                <div class="contact-label">EMAIL</div>
                 <div class="contact-value">danny@deadlitstudios.com</div>
             </a>
 
@@ -538,7 +556,7 @@
                         <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2M7.6 4C5.61 4 4 5.61 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C18.39 20 20 18.39 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6M17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75S17.94 8 17.25 8S16 7.44 16 6.75S16.56 5.5 17.25 5.5M12 7C14.76 7 17 9.24 17 12S14.76 17 12 17S7 14.76 7 12S9.24 7 12 7M12 9C10.34 9 9 10.34 9 12S10.34 15 12 15S15 13.66 15 12S13.66 9 12 9Z"/>
                     </svg>
                 </div>
-                <div class="contact-label">Instagram</div>
+                <div class="contact-label">INSTAGRAM</div>
                 <div class="contact-value">@deadlitstudios</div>
             </a>
 
@@ -548,7 +566,7 @@
                         <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22S19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9S10.62 6.5 12 6.5S14.5 7.62 14.5 9S13.38 11.5 12 11.5Z"/>
                     </svg>
                 </div>
-                <div class="contact-label">Location</div>
+                <div class="contact-label">LOCATION</div>
                 <div class="contact-value">Denver, CO</div>
             </a>
         </div>
