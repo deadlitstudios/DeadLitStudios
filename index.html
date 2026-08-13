@@ -22,6 +22,18 @@
             padding: 0;
         }
 
+        /* FORCE ALL REVEAL SECTIONS TO BE VISIBLE BY DEFAULT */
+        .reveal, 
+        .reveal-init,
+        .hero-content, 
+        .about-container, 
+        .services-grid, 
+        .contact-info {
+            opacity: 1 !important;
+            transform: none !important;
+            visibility: visible !important;
+        }
+
         /* Accent & Highlights Override */
         .play-btn-badge, .cta-button, .service-price {
             background: linear-gradient(135deg, #74b3ce 0%, #3a728b 100%) !important;
@@ -33,11 +45,11 @@
         }
 
         /* Force Loading Screen to Hide Smoothly */
-        .loading-screen.hidden {
+        .loading-screen, #loadingScreen {
+            display: none !important;
             opacity: 0 !important;
             pointer-events: none !important;
             visibility: hidden !important;
-            transition: opacity 0.5s ease;
         }
 
         /* Video Popup Modal Styles */
@@ -105,6 +117,10 @@
             background-color: rgba(10, 12, 16, 0.9) !important;
             border-bottom: 1px solid rgba(134, 192, 216, 0.15);
             backdrop-filter: blur(8px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
         .logo {
@@ -168,6 +184,11 @@
             padding: 30px 15px !important;
             box-sizing: border-box !important;
             margin: 0 !important;
+            background: var(--deadlit-card-bg);
+            border-radius: 8px;
+            border: 1px solid rgba(134, 192, 216, 0.15);
+            text-decoration: none;
+            color: #d1d5db;
         }
 
         #contact .contact-icon {
@@ -178,12 +199,14 @@
             height: 50px !important;
             margin: 0 auto 12px auto !important;
             border-radius: 50% !important;
+            background: rgba(134, 192, 216, 0.1);
             flex-shrink: 0 !important;
         }
 
         #contact .contact-icon svg {
             width: 24px !important;
             height: 24px !important;
+            fill: var(--deadlit-blue);
         }
 
         #contact .contact-label,
@@ -200,6 +223,7 @@
         #contact .contact-value {
             font-size: 0.82rem !important;
             word-break: break-all !important;
+            color: #fff;
         }
 
         @media (max-width: 768px) {
@@ -210,11 +234,6 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loader"></div>
-    </div>
-
     <!-- Header Navigation -->
     <header id="header">
         <nav>
@@ -237,14 +256,14 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section" id="home">
+    <section class="hero-section" id="home" style="padding-top: 120px;">
         <div class="hero-bg"></div>
         <div class="hero-shapes">
             <div class="floating-accent accent-1"></div>
             <div class="floating-accent accent-2"></div>
             <div class="floating-accent accent-3"></div>
         </div>
-        <div class="hero-content reveal">
+        <div class="hero-content">
             <h1 class="hero-title" style="letter-spacing: 3px; text-transform: uppercase;">DeadLit Studios</h1>
             <p class="hero-subtitle">Cinematic Videography & Visual Production</p>
             <a href="#portfolio" class="cta-button">View Selected Works</a>
@@ -442,10 +461,10 @@
             <button class="sleek-pill" onclick="filterSleek('commercial', event)">Commercial</button>
         </div>
 
-        <!-- Cards Grid -->
+        <!-- Cards Grid (Updated with placeholder image URLs) -->
         <div class="sleek-grid">
             <div class="sleek-card" data-cat="heavy" onclick="handleCardClick(this, 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
-                <img src="thumb1.jpg" alt="Project">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="Project">
                 <div class="sleek-play">
                     <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 </div>
@@ -459,7 +478,7 @@
             </div>
 
             <div class="sleek-card" data-cat="hiphop" onclick="handleCardClick(this, 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
-                <img src="thumb2.jpg" alt="Project">
+                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80" alt="Project">
                 <div class="sleek-play">
                     <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 </div>
@@ -473,7 +492,7 @@
             </div>
 
             <div class="sleek-card" data-cat="commercial" onclick="handleCardClick(this, 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
-                <img src="thumb3.jpg" alt="Project">
+                <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="Project">
                 <div class="sleek-play">
                     <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 </div>
@@ -489,159 +508,66 @@
     </section>
 
     <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="about-container reveal">
-            <div class="about-image">
-                <img src="images/486466830_9264047680316351_4957741206149788354_n.jpg" alt="Videographer">
-            </div>
-            <div class="about-content">
-                <h2>About the Studio</h2>
-                <p>DeadLit Studios specializes in story-driven, heavy visual media, high-contrast cinematography, and creative production tailored to artists, performers, and brands.</p>
-                <p>From narrative music videos to kinetic typography and album visuals, every piece is designed with an emphasis on atmosphere, tone, and visual weight.</p>
-                
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Projects</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">7+</div>
-                        <div class="stat-label">Years</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">4K</div>
-                        <div class="stat-label">Cinema Rig</div>
-                    </div>
-                </div>
+    <section class="about-section" id="about" style="padding: 100px 20px;">
+        <div class="about-container">
+            <div class="about-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 2.5rem; color: #fff;">About the Studio</h2>
+                <p style="font-size: 1.1rem; line-height: 1.6; color: #a1a5b0;">DeadLit Studios specializes in story-driven, heavy visual media, high-contrast cinematography, and creative production tailored to artists, performers, and brands.</p>
+                <p style="font-size: 1.1rem; line-height: 1.6; color: #a1a5b0;">From narrative music videos to kinetic typography and album visuals, every piece is designed with an emphasis on atmosphere, tone, and visual weight.</p>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services-section" id="services">
-        <div class="services-container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Services Offered</h2>
-                <p class="section-subtitle">Professional media production tailored to your vision</p>
+    <section class="services-section" id="services" style="padding: 100px 20px;">
+        <div class="services-container" style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+                <h2 class="section-title" style="font-size: 2.5rem; color: #fff;">Services Offered</h2>
+                <p class="section-subtitle" style="color: #666;">Professional media production tailored to your vision</p>
             </div>
 
-            <div class="services-grid reveal">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m16 13 5.223-3.482a.5.5 0 0 1 .777.416v8.132a.5.5 0 0 1-.777.416L16 15" />
-                            <rect width="14" height="12" x="2" y="6" rx="2" />
-                        </svg>
-                    </div>
+            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="service-card" style="padding: 30px;">
                     <h3 class="service-title">Music Video Production</h3>
-                    <p class="service-description">Story-driven, performance-focused, and live music videos tailored to your track's identity. Full production from concept development to high-end color grading.</p>
-                    <div class="service-price">Starting at $750</div>
+                    <p class="service-description">Story-driven, performance-focused, and live music videos tailored to your track's identity.</p>
+                    <div class="service-price" style="display: inline-block; padding: 6px 14px; border-radius: 4px; margin-top: 15px;">Starting at $750</div>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M2 10v4" />
-                            <path d="M6 6v12" />
-                            <path d="M10 3v18" />
-                            <path d="M14 8v8" />
-                            <path d="M18 5v14" />
-                            <path d="M22 10v4" />
-                        </svg>
-                    </div>
+                <div class="service-card" style="padding: 30px;">
                     <h3 class="service-title">Visualizers & Lyric Videos</h3>
-                    <p class="service-description">Audio-reactive stream videos, motion graphics, and dynamic kinetic typography. High-impact visuals designed for song releases, YouTube drops, and live streams.</p>
-                    <div class="service-price">Starting at $150</div>
+                    <p class="service-description">Audio-reactive stream videos, motion graphics, and dynamic kinetic typography.</p>
+                    <div class="service-price" style="display: inline-block; padding: 6px 14px; border-radius: 4px; margin-top: 15px;">Starting at $150</div>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m3 11 18-5v12L3 13v-2z" />
-                            <path d="M11.6 16.8 a 3 3 0 1 1 -5.8-1.6" />
-                        </svg>
-                    </div>
+                <div class="service-card" style="padding: 30px;">
                     <h3 class="service-title">Commercial & Promo Content</h3>
-                    <p class="service-description">High-converting promo videos, brand spotlights, and advertisement content. Eye-catching visuals optimized for web campaigns and social media marketing.</p>
-                    <div class="service-price">Custom Pricing</div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Wedding Videography & Photo</h3>
-                    <p class="service-description">Comprehensive wedding day coverage, capturing every raw moment from preparation to reception. Includes cinematic highlight films, photo sets, and full event documentation.</p>
-                    <div class="service-price">Starting at $900</div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
-                            <circle cx="12" cy="13" r="3" />
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Portrait Photography</h3>
-                    <p class="service-description">Band press photos, creative portraits, personal branding, and lifestyle sessions. Guided posing and professional retouching to build your signature visual identity.</p>
-                    <div class="service-price">Starting at $150</div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
-                            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
-                            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
-                            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
-                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.92 0 1.7-.71 1.7-1.63 0-.43-.16-.83-.43-1.13-.27-.31-.44-.72-.44-1.17 0-.92.78-1.67 1.7-1.67h2.5c2.73 0 4.97-2.24 4.97-4.97 0-5.22-4.45-9.43-10-9.43z" />
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Digital Design & Merch</h3>
-                    <p class="service-description">Custom album artwork, apparel graphics, sticker designs, and brand assets. Cohesive, production-ready digital artwork crafted specifically for physical printing and digital releases.</p>
-                    <div class="service-price">Starting at $200</div>
+                    <p class="service-description">High-converting promo videos, brand spotlights, and advertisement content.</p>
+                    <div class="service-price" style="display: inline-block; padding: 6px 14px; border-radius: 4px; margin-top: 15px;">Custom Pricing</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <div class="contact-container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's discuss your next project</p>
+    <section class="contact-section" id="contact" style="padding: 100px 20px;">
+        <div class="contact-container" style="max-width: 1000px; margin: 0 auto;">
+            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+                <h2 class="section-title" style="font-size: 2.5rem; color: #fff;">Get In Touch</h2>
+                <p class="section-subtitle" style="color: #666;">Let's discuss your next project</p>
             </div>
 
-            <div class="contact-info reveal">
+            <div class="contact-info">
                 <a href="mailto:danny@deadlitstudios.com" class="contact-item">
-                    <div class="contact-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/>
-                        </svg>
-                    </div>
                     <div class="contact-label">EMAIL</div>
                     <div class="contact-value">danny@deadlitstudios.com</div>
                 </a>
 
                 <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-item">
-                    <div class="contact-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2M7.6 4C5.61 4 4 5.61 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C18.39 20 20 18.39 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6M17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75S17.94 8 17.25 8S16 7.44 16 6.75S16.56 5.5 17.25 5.5M12 7C14.76 7 17 9.24 17 12S14.76 17 12 17S7 14.76 7 12S9.24 7 12 7M12 9C10.34 9 9 10.34 9 12S10.34 15 12 15S15 13.66 15 12S13.66 9 12 9Z"/>
-                        </svg>
-                    </div>
                     <div class="contact-label">INSTAGRAM</div>
                     <div class="contact-value">@deadlitstudios</div>
                 </a>
 
                 <a href="#" class="contact-item">
-                    <div class="contact-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22S19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9S10.62 6.5 12 6.5S14.5 7.62 14.5 9S13.38 11.5 12 11.5Z"/>
-                        </svg>
-                    </div>
                     <div class="contact-label">LOCATION</div>
                     <div class="contact-value">Denver, CO</div>
                 </a>
@@ -650,12 +576,10 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p class="footer-text">
-                © 2026 DeadLit Studios. All rights reserved.
-            </p>
-        </div>
+    <footer style="text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p class="footer-text" style="color: #666; font-size: 0.85rem;">
+            © 2026 DeadLit Studios. All rights reserved.
+        </p>
     </footer>
 
     <!-- Video Popup Modal Markup -->
@@ -668,27 +592,8 @@
         </div>
     </div>
 
-    <!-- Template JS File -->
-    <script src="templatemo-amber-script.js"></script>
-
     <!-- Custom Scripts -->
     <script>
-        // Force loading screen to hide once page finishes loading
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loadingScreen');
-            if (loader) {
-                loader.classList.add('hidden');
-            }
-        });
-
-        // Backup safety timeout to hide loader if JS hangs
-        setTimeout(function() {
-            const loader = document.getElementById('loadingScreen');
-            if (loader && !loader.classList.contains('hidden')) {
-                loader.classList.add('hidden');
-            }
-        }, 1500);
-
         // Portfolio Category Filter
         function filterSleek(cat, event) {
             document.querySelectorAll('.sleek-pill').forEach(btn => btn.classList.remove('active'));
