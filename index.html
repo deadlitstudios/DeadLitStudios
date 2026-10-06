@@ -797,10 +797,10 @@
             <button class="sleek-pill" onclick="filterSleek('shortfilms', event)">Short Films</button>
         </div>
 
-       <!-- Cards Grid -->
-<div class="sleek-grid">
+ <!-- Cards Grid -->
+<div class="sleek-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; width: 100%;">
 
-  <div class="sleek-grid">
+    <!-- 1. Origami Summer - Texts Go Green (Sep 2025) -->
     <div class="sleek-card" data-cat="heavy" onclick="handleCardClick(this, 'https://www.youtube.com/embed/xze5QCtVHfQ?autoplay=1')">
         <img src="https://img.youtube.com/vi/xze5QCtVHfQ/maxresdefault.jpg" alt="Origami Summer - Texts Go Green">
         <div class="sleek-play">
@@ -815,6 +815,7 @@
         </div>
     </div>
 
+    <!-- 2. Origami Summer - Not Another Sequel (Feb 2025) -->
     <div class="sleek-card" data-cat="heavy" onclick="handleCardClick(this, 'https://www.youtube.com/embed/67jSoFS9cH0?autoplay=1')">
         <img src="https://img.youtube.com/vi/67jSoFS9cH0/maxresdefault.jpg" alt="Origami Summer - Not Another Sequel">
         <div class="sleek-play">
@@ -829,6 +830,7 @@
         </div>
     </div>
 
+    <!-- 3. ADOLLA - Cherry Blossom (Sep 2024) -->
     <div class="sleek-card" data-cat="heavy" onclick="handleCardClick(this, 'https://www.youtube.com/embed/SYGWAhoI0yU?autoplay=1')">
         <img src="https://img.youtube.com/vi/SYGWAhoI0yU/maxresdefault.jpg" alt="ADOLLA - Cherry Blossom">
         <div class="sleek-play">
@@ -843,74 +845,39 @@
         </div>
     </div>
 
+    <!-- 4. All Is Calm - How Holy (Jul 2024 - Lyric Video) -->
+    <div class="sleek-card" data-cat="visualizer" onclick="handleCardClick(this, 'https://www.youtube.com/embed/CsMboLt-M9Y?autoplay=1')">
+        <img src="https://img.youtube.com/vi/CsMboLt-M9Y/maxresdefault.jpg" alt="All Is Calm - How Holy">
+        <div class="sleek-play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="sleek-overlay">
+            <span class="sleek-tag">Visualizers</span>
+            <div class="sleek-details">
+                <h3 class="sleek-project-title">How Holy</h3>
+                <p class="sleek-artist">All Is Calm</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Magnolia - Bearer of the Curse (Jun 2024 - Lyric Video) -->
+    <div class="sleek-card" data-cat="visualizer" onclick="handleCardClick(this, 'https://www.youtube.com/embed/zX-LkMx3KS0?autoplay=1')">
+        <img src="https://img.youtube.com/vi/zX-LkMx3KS0/maxresdefault.jpg" alt="Magnolia - Bearer of the Curse">
+        <div class="sleek-play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="sleek-overlay">
+            <span class="sleek-tag">Visualizers</span>
+            <div class="sleek-details">
+                <h3 class="sleek-project-title">Bearer of the Curse</h3>
+                <p class="sleek-artist">Magnolia</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Devoratus - Lost (Jan 2024) -->
     <div class="sleek-card" data-cat="heavy" onclick="handleCardClick(this, 'https://www.youtube.com/embed/eS_FZCknFe0?autoplay=1')">
-        <img src="https://img.youtube.com/vi/eS_FZCknFe0/maxresdefault.jpg" alt="Devoratus - Lost">
-        <div class="sleek-play">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <div class="sleek-overlay">
-            <span class="sleek-tag">Heavy / Metal</span>
-            <div class="sleek-details">
-                <h3 class="sleek-project-title">Lost</h3>
-                <p class="sleek-artist">Devoratus</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="sleek-card" data-cat="heavy" onclick="handleCardClick(this, 'https://www.youtube.com/embed/vwMZR0VJMow?autoplay=1')">
-        <img src="https://img.youtube.com/vi/vwMZR0VJMow/maxresdefault.jpg" alt="Ghost In Stereo - Heavy Again">
-        <div class="sleek-play">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <div class="sleek-overlay">
-            <span class="sleek-tag">Heavy / Metal</span>
-            <div class="sleek-details">
-                <h3 class="sleek-project-title">Heavy Again</h3>
-                <p class="sleek-artist">Ghost In Stereo</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="sleek-card" data-cat="heavy" onclick="handleCardClick(this, 'https://www.youtube.com/embed/JWvQkooO7-M?autoplay=1')">
-        <img src="https://img.youtube.com/vi/JWvQkooO7-M/maxresdefault.jpg" alt="Ghost In Stereo - Corrosion">
-        <div class="sleek-play">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <div class="sleek-overlay">
-            <span class="sleek-tag">Heavy / Metal</span>
-            <div class="sleek-details">
-                <h3 class="sleek-project-title">Corrosion</h3>
-                <p class="sleek-artist">Ghost In Stereo</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="sleek-card" data-cat="heavy" onclick="handleCardClick(this, 'https://www.youtube.com/embed/X9eoZ3cQz88?autoplay=1')">
-        <img src="https://img.youtube.com/vi/X9eoZ3cQz88/maxresdefault.jpg" alt="Devoratus - Distancia">
-        <div class="sleek-play">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <div class="sleek-overlay">
-            <span class="sleek-tag">Heavy / Metal</span>
-            <div class="sleek-details">
-                <h3 class="sleek-project-title">Distancia</h3>
-                <p class="sle
-            <div class="sleek-card" data-cat="commercial" onclick="handleCardClick(this, 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
-                <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="Project">
-                <div class="sleek-play">
-                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-                <div class="sleek-overlay">
-                    <span class="sleek-tag">Commercial</span>
-                    <div class="sleek-details">
-                        <h3 class="sleek-project-title">Brand Campaign</h3>
-                        <p class="sleek-artist">Client Spotlight</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+        <img src="
     <!-- About Section -->
     <section class="about-section" id="about">
         <div class="about-container reveal">
