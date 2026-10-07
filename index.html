@@ -1821,11 +1821,16 @@ function filterSleek(category, event) {
         }
     });
 
+   function slidePortfolio(direction) {
     const slider = document.getElementById('portfolioSlider');
-    if (slider) {
-        slider.scrollTo({
-            left: 0,
-            behavior: 'smooth'
+    if (!slider) return;
+
+    // Measure container width to scroll one full page of 3 columns
+    const scrollAmount = slider.clientWidth * direction;
+
+    slider.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
         });
     }
 }
