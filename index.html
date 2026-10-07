@@ -1763,5 +1763,54 @@
             }
         });
     </script>
+    <script>
+function slidePortfolio(direction) {
+    const slider = document.getElementById('portfolioSlider');
+    if (!slider) return;
+
+    const visibleCards = Array.from(slider.querySelectorAll('.sleek-card')).filter(card => {
+        return window.getComputedStyle(card).display !== 'none';
+    });
+
+    if (visibleCards.length === 0) return;
+
+    const cardWidth = visibleCards[0].getBoundingClientRect().width;
+    const gap = 24;
+    const cardsToScroll = window.innerWidth <= 600 ? 1 : 3;
+    const scrollAmount = (cardWidth + gap) * cardsToScroll * direction;
+
+    slider.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+    });
+}
+
+function filterSleek(category, event) {
+    const pills = document.querySelectorAll('.sleek-pill');
+    pills.forEach(pill => pill.classList.remove('active'));
+    
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }
+
+    const cards = document.querySelectorAll('#portfolioSlider .sleek-card');
+    cards.forEach(card => {
+        const cardCategory = card.getAttribute('data-cat');
+        if (category === 'all' || cardCategory === category) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    const slider = document.getElementById('portfolioSlider');
+    if (slider) {
+        slider.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+}
+</script>
 </body>
 </html>
