@@ -12,8 +12,27 @@
             --deadlit-glow: rgba(134, 192, 216, 0.4);
             --deadlit-dark-bg: #0a0c10;
             --deadlit-card-bg: #12161f;
+            
         }
+/* Reduce top/bottom padding on the About section container */
+.about-section {
+    padding: 40px 20px !important; /* Reduces outer section spacing */
+}
 
+.about-container {
+    padding: 30px 40px !important; /* Adjusts inner top/bottom padding (30px) and left/right (40px) */
+    display: flex !important;
+    align-items: center !important; /* Centers image vertically with text */
+    gap: 40px !important;
+}
+
+/* Ensure the image doesn't force unnecessary height */
+.about-image img {
+    max-height: 400px !important; /* Prevents large portrait photos from expanding container height */
+    width: auto !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+}
         body {
             background-color: var(--deadlit-dark-bg) !important;
             color: #d1d5db !important;
