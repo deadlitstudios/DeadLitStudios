@@ -33,6 +33,30 @@
     object-fit: cover !important;
     border-radius: 12px !important;
 }
+        /* Tighten About Section Card Height */
+.about-container {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 30px 40px !important; /* Top/Bottom padding 30px, Left/Right 40px */
+    display: flex !important;
+    align-items: center !important;
+}
+
+.about-content {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+.about-image {
+    height: auto !important;
+}
+
+.about-image img {
+    display: block !important;
+    max-height: 320px !important; /* Limits image height to keep card compact */
+    width: auto !important;
+    object-fit: cover !important;
+}
         body {
             background-color: var(--deadlit-dark-bg) !important;
             color: #d1d5db !important;
