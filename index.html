@@ -1835,5 +1835,27 @@ function filterSleek(category, event) {
     }
 }
 </script>
+    <script>
+// Automatically fix missing YouTube maxresdefault thumbnails across all cards
+document.addEventListener("DOMContentLoaded", function() {
+    const cardImages = document.querySelectorAll('#portfolioSlider .sleek-card img');
+    
+    cardImages.forEach(img => {
+        // If image fails to load entirely
+        img.addEventListener('error', function() {
+            if (this.src.includes('maxresdefault.jpg')) {
+                this.src = this.src.replace('maxresdefault.jpg', 'hqdefault.jpg');
+            }
+        });
+
+        // Check if YouTube returned a 120x90 pixel grey placeholder image
+        img.addEventListener('load', function() {
+            if (this.naturalWidth === 120 && this.naturalHeight === 90) {
+                this.src = this.src.replace('maxresdefault.jpg', 'hqdefault.jpg');
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
