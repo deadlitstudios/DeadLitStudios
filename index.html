@@ -14,48 +14,36 @@
             --deadlit-card-bg: #12161f;
             
         }
-/* Reduce top/bottom padding on the About section container */
-.about-section {
-    padding: 40px 20px !important; /* Reduces outer section spacing */
-}
-
+/* Keep image full size, shrink top/bottom dark box spacing */
 .about-container {
-    padding: 30px 40px !important; /* Adjusts inner top/bottom padding (30px) and left/right (40px) */
-    display: flex !important;
-    align-items: center !important; /* Centers image vertically with text */
-    gap: 40px !important;
-}
-
-/* Ensure the image doesn't force unnecessary height */
-.about-image img {
-    max-height: 400px !important; /* Prevents large portrait photos from expanding container height */
-    width: auto !important;
-    object-fit: cover !important;
-    border-radius: 12px !important;
-}
-        /* Tighten About Section Card Height */
-.about-container {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
     height: auto !important;
     min-height: 0 !important;
-    padding: 30px 40px !important; /* Top/Bottom padding 30px, Left/Right 40px */
     display: flex !important;
-    align-items: center !important;
+    align-items: center !important; /* Centers image and text vertically */
 }
 
-.about-content {
-    height: auto !important;
-    min-height: 0 !important;
-}
-
-.about-image {
-    height: auto !important;
-}
-
+/* Allow image to stay full and natural without shrinking */
 .about-image img {
+    max-height: 480px !important; /* Lets your photo stay large */
+    width: 100% !important;
+    height: auto !important;
     display: block !important;
-    max-height: 320px !important; /* Limits image height to keep card compact */
-    width: auto !important;
-    object-fit: cover !important;
+}
+
+/* Remove extra margins on text inside the card */
+.about-content h2 {
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+}
+
+.about-content p {
+    margin-bottom: 12px !important;
+}
+
+.stats {
+    margin-top: 20px !important;
 }
         body {
             background-color: var(--deadlit-dark-bg) !important;
