@@ -727,11 +727,29 @@
             padding: 40px 20px;
             border-top: 1px solid rgba(134, 192, 216, 0.15);
         }
-        /* Force 3 cards per row inside the slider */
+        /* 2 Rows of 3 Cards Layout */
+#portfolioSlider {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    height: 620px !important; /* Adjust height to fit 2 card rows comfortably */
+    overflow-x: auto !important;
+    scroll-behavior: smooth !important;
+    gap: 24px !important;
+    width: 100% !important;
+    scrollbar-width: none !important;
+}
+
+#portfolioSlider::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* Calculate width for 3 cards per column section */
 #portfolioSlider .sleek-card {
-    flex: 0 0 calc((100% - 48px) / 3) !important;
-    min-width: 260px;
-    box-sizing: border-box;
+    flex: 0 0 calc((100% - 24px) / 2) !important; /* Spans half height for 2 rows */
+    width: calc((100% - 48px) / 3) !important;    /* 3 cards wide across row */
+    min-width: 280px !important;
+    box-sizing: border-box !important;
 }
 
 /* Hide horizontal scrollbar */
