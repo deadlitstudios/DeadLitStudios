@@ -727,6 +727,17 @@
             padding: 40px 20px;
             border-top: 1px solid rgba(134, 192, 216, 0.15);
         }
+        /* Force 3 cards per row inside the slider */
+#portfolioSlider .sleek-card {
+    flex: 0 0 calc((100% - 48px) / 3) !important;
+    min-width: 260px;
+    box-sizing: border-box;
+}
+
+/* Hide horizontal scrollbar */
+#portfolioSlider::-webkit-scrollbar {
+    display: none;
+}
     </style>
 </head>
 <body>
@@ -1452,6 +1463,15 @@
     </div>
 
 </div>
+    </div> <!-- Closes #portfolioSlider -->
+
+        <!-- Right Arrow Button -->
+        <button class="slider-arrow next-arrow" onclick="slidePortfolio(1)" aria-label="Next">&rarr;</button>
+
+    </div> <!-- Closes .portfolio-slider-wrapper -->
+</section> <!-- Closes .sleek-portfolio -->
+
+    
              <!-- About Section -->
     <section class="about-section" id="about">
         <div class="about-container reveal">
